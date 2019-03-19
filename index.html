@@ -110,8 +110,7 @@ var popupContent = "<h3>Breathing Spaces " + feature.properties['Name'] + "</h3>
         }
 
         function style_AURN_Soton_Feb19Stats_2_0(feature) {
-            if (feature.properties['mean'] >= 25.766164 && feature.properties['mean'] <= 26.157577 ) {
-                return {
+            return {
                 pane: 'pane_AURN_Soton_Feb19Stats_2',
                 radius: 10.0,
                 opacity: 1,
@@ -122,38 +121,7 @@ var popupContent = "<h3>Breathing Spaces " + feature.properties['Name'] + "</h3>
                 weight: 1,
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(68,1,84,1.0)',
-            }
-            }
-            if (feature.properties['mean'] >= 26.157577 && feature.properties['mean'] <= 26.548991 ) {
-                return {
-                pane: 'pane_AURN_Soton_Feb19Stats_2',
-                radius: 10.0,
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1,
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(32,144,141,1.0)',
-            }
-            }
-            if (feature.properties['mean'] >= 26.548991 && feature.properties['mean'] <= 26.940404 ) {
-                return {
-                pane: 'pane_AURN_Soton_Feb19Stats_2',
-                radius: 10.0,
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1,
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(253,231,37,1.0)',
-            }
+                fillColor: 'rgba(150,1,84,1.0)',
             }
         }
         map.createPane('pane_AURN_Soton_Feb19Stats_2');
@@ -176,7 +144,7 @@ var popupContent = "<h3>Breathing Spaces " + feature.properties['Name'] + "</h3>
 
         var baseMaps = {};
         L.control.layers(baseMaps, {
-            'AURN sensors<br /><table><tr><td style="text-align: center;"><img src="legend/AURN_Soton_Feb19Stats_2_257726160.png" /></td><td> 25.77 - 26.16 </td></tr><tr><td style="text-align: center;"><img src="legend/AURN_Soton_Feb19Stats_2_261626551.png" /></td><td> 26.16 - 26.55 </td></tr><tr><td style="text-align: center;"><img src="legend/AURN_Soton_Feb19Stats_2_265526942.png" /></td><td> 26.55 - 26.94 </td></tr></table>': layer_AURN_Soton_Feb19Stats_2,
+            'AURN sensors': layer_AURN_Soton_Feb19Stats_2,
             '<img src="legend/sensor_icon_darkblue.png" height=20px /> Breathing Spaces sensors': layer_ActiveSensors_1,
         }, {
             collapsed: false
