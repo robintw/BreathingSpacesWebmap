@@ -44,7 +44,11 @@
         ]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix(
-            '<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="http://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> Sensor data from Breathing Spaces project, Defra AURN, SCC'
+            '<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot;\
+             <a href="http://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; \
+             Sensor data from <a href="https://breathingspaces.org.uk/">Breathing Spaces</a>, \
+             <a href="https://uk-air.defra.gov.uk/networks/network-info?view=aurn">Defra AURN</a>, \
+<a href="https://www.southampton.gov.uk/environmental-issues/pollution/air-quality/monitoring/nitrogen-dioxide-diffusion-tubes.aspx">SCC</a>'
         );
         var bounds_group = new L.featureGroup([]);
 
@@ -91,7 +95,10 @@ var popupContent = "<h3>Breathing Spaces " + feature.properties['Name'] + "</h3>
 
         function pop_AURN_Soton_Feb19Stats_2(feature, layer) {
             var popupContent = '<h3>AURN Site ' + feature.properties['site_name'] + '</h3>' +
-                    'Feb 2019 PM10 data' +
+                    '<a href="graphs/' + feature.properties['site_id'] +'.html">\
+                        <img src="graphs/' + feature.properties['site_id'] +'.png" width=300px></a>' +
+                    '(click graph to get interactive version)<br/><br/>\
+                     <b>Feb 2019 PM<sub>10</sub> statistics:</b>' + 
                     '<table>\
                     <tr>\
                         <td><b>Mean:</b> </td> <td colspan="2">' + (feature.properties['mean'] !== null ? Autolinker.link(String(feature.properties['mean'])) : '') + '</td>\
@@ -105,8 +112,7 @@ var popupContent = "<h3>Breathing Spaces " + feature.properties['Name'] + "</h3>
                     <tr>\
                         <td><b>Median:</b> </td> <td colspan="2">' + (feature.properties['50%'] !== null ? Autolinker.link(String(feature.properties['50%'])) : '') + '</td>\
                     </tr>\
-                    </table>\
-                    <a href="graphs/' + feature.properties['site_id'] +'.html">Click to see graph</a>';
+                    </table>';
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
