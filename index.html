@@ -105,7 +105,8 @@ var popupContent = "<h3>Breathing Spaces " + feature.properties['Name'] + "</h3>
                     <tr>\
                         <td><b>Median:</b> </td> <td colspan="2">' + (feature.properties['50%'] !== null ? Autolinker.link(String(feature.properties['50%'])) : '') + '</td>\
                     </tr>\
-                </table>';
+                    </table>\
+                    <a href="graphs/' + feature.properties['site_id'] +'.html">Click to see graph</a>';
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
