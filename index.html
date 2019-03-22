@@ -24,6 +24,7 @@
     </div>
     <script src="js/qgis2web_expressions.js"></script>
     <script src="js/leaflet.js"></script>
+    <script src="js/leaflet-svg-shape-markers.min.js"></script>
     <script src="js/leaflet.rotatedMarker.js"></script>
     <script src="js/leaflet.pattern.js"></script>
     <script src="js/leaflet-hash.js"></script>
@@ -31,8 +32,12 @@
     <script src="js/rbush.min.js"></script>
     <script src="js/labelgun.min.js"></script>
     <script src="js/labels.js"></script>
+
+    <script src="js/TileLayer.Grayscale.js"></script>
+
     <script src="data/ActiveSensors_1.js"></script>
     <script src="data/AURN_Soton_Feb19Stats_2.js"></script>
+    <script src="data/DiffusionTubeMeasurements_MergedAndFixed_2.js"></script>
     <script>
         var map = L.map('map', {
             zoomControl: true,
@@ -46,6 +51,7 @@
         map.attributionControl.setPrefix(
             '<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot;\
              <a href="http://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; \
+             &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &middot;\
              Sensor data from <a href="https://breathingspaces.org.uk/">Breathing Spaces</a>, \
              <a href="https://uk-air.defra.gov.uk/networks/network-info?view=aurn">Defra AURN</a>, \
 <a href="https://www.southampton.gov.uk/environmental-issues/pollution/air-quality/monitoring/nitrogen-dioxide-diffusion-tubes.aspx">SCC</a>'
@@ -53,14 +59,34 @@
         var bounds_group = new L.featureGroup([]);
 
         function setBounds() {}
+
+        ///////////////////////////////////////////////////////////////////////////////////
+        // Background map
+        ///////////////////////////////////////////////////////////////////////////////////
         var layer_StamenTonerBackground_0 = L.tileLayer('http://tile.stamen.com/toner/{z}/{x}/{y}.png', {
             opacity: 0.3
         });
         layer_StamenTonerBackground_0.addTo(map);
         map.addLayer(layer_StamenTonerBackground_0);
 
+        var layer_OSM = L.tileLayer(' https://a.tile.openstreetmap.org/{z}/{x}/{y}.png ', {
+        opacity: 0.3
+        });
+        // layer_OSM.addTo(map);
+        // map.addLayer(layer_OSM);
+
+        var layer_OSM_gray = L.tileLayer.grayscale(' https://a.tile.openstreetmap.org/{z}/{x}/{y}.png ', {
+        opacity: 0.3
+        });
+        //layer_OSM_gray.addTo(map);
+        // map.addLayer(layer_OSM_gray);
+
+        ///////////////////////////////////////////////////////////////////////////////////
+        // Active (Breathing Spaces) sensors layer
+        ///////////////////////////////////////////////////////////////////////////////////
         function pop_ActiveSensors_1(feature, layer) {
-var popupContent = "<h3>Breathing Spaces " + feature.properties['Name'] + "</h3> <br />" + feature.properties['description']
+            var popupContent = "<h3>Breathing Spaces " + feature.properties['Name'] + "</h3> <br />" + feature
+                .properties['description']
             layer.bindPopup(popupContent, {});
         }
 
@@ -93,27 +119,38 @@ var popupContent = "<h3>Breathing Spaces " + feature.properties['Name'] + "</h3>
         bounds_group.addLayer(layer_ActiveSensors_1);
         map.addLayer(layer_ActiveSensors_1);
 
+
+
+        ///////////////////////////////////////////////////////////////////////////////////
+        // AURN layer
+        ///////////////////////////////////////////////////////////////////////////////////
         function pop_AURN_Soton_Feb19Stats_2(feature, layer) {
             var popupContent = '<h3>AURN Site ' + feature.properties['site_name'] + '</h3>' +
-                    '<a href="graphs/' + feature.properties['site_id'] +'.html">\
-                        <img src="graphs/' + feature.properties['site_id'] +'.png" width=300px></a>' +
-                    '(click graph to get interactive version)<br/><br/>\
-                     <b>Feb 2019 PM<sub>10</sub> statistics:</b>' + 
-                    '<table>\
+                '<a href="graphs/' + feature.properties['site_id'] + '.html">\
+                        <img src="graphs/' + feature.properties['site_id'] + '.png" width=300px></a>' +
+                '(click graph to get interactive version)<br/><br/>\
+                     <b>Feb 2019 PM<sub>10</sub> statistics:</b>' +
+                '<table>\
                     <tr>\
-                        <td><b>Mean:</b> </td> <td colspan="2">' + (feature.properties['mean'] !== null ? Autolinker.link(String(feature.properties['mean'])) : '') + '</td>\
+                        <td><b>Mean:</b> </td> <td colspan="2">' + (feature.properties['mean'] !== null ? Autolinker
+                    .link(String(feature.properties['mean'])) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td><b>Max:</b> </td> <td colspan="2">' + (feature.properties['max'] !== null ? Autolinker.link(String(feature.properties['max'])) : '') + '</td>\
+                        <td><b>Max:</b> </td> <td colspan="2">' + (feature.properties['max'] !== null ? Autolinker
+                    .link(String(feature.properties['max'])) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td><b>Min:</b> </td> <td colspan="2">' + (feature.properties['min'] !== null ? Autolinker.link(String(feature.properties['min'])) : '') + '</td>\
+                        <td><b>Min:</b> </td> <td colspan="2">' + (feature.properties['min'] !== null ? Autolinker
+                    .link(String(feature.properties['min'])) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td><b>Median:</b> </td> <td colspan="2">' + (feature.properties['50%'] !== null ? Autolinker.link(String(feature.properties['50%'])) : '') + '</td>\
+                        <td><b>Median:</b> </td> <td colspan="2">' + (feature.properties['50%'] !== null ? Autolinker
+                    .link(String(feature.properties['50%'])) : '') + '</td>\
                     </tr>\
                     </table>';
-            layer.bindPopup(popupContent, {maxHeight: 400});
+            layer.bindPopup(popupContent, {
+                maxHeight: 400
+            });
         }
 
         function style_AURN_Soton_Feb19Stats_2_0(feature) {
@@ -149,9 +186,95 @@ var popupContent = "<h3>Breathing Spaces " + feature.properties['Name'] + "</h3>
         bounds_group.addLayer(layer_AURN_Soton_Feb19Stats_2);
         map.addLayer(layer_AURN_Soton_Feb19Stats_2);
 
-        var baseMaps = {};
+
+
+        ///////////////////////////////////////////////////////////////////////////////////
+        // Diffusion Tubes layer
+        ///////////////////////////////////////////////////////////////////////////////////
+        function pop_DiffusionTubeMeasurements_MergedAndFixed_2(feature, layer) {
+            var popupContent = '<h3>Diffusion tube at ' + feature.properties["Name"] + '</h3>';
+            layer.bindPopup(popupContent, {
+                maxHeight: 400
+            });
+        }
+
+        function style_DiffusionTubeMeasurements_MergedAndFixed_2_0(feature) {
+            if (feature.properties['local adjusted'] >= 0.000000 && feature.properties['local adjusted'] <= 40.000000) {
+                return {
+                    pane: 'pane_DiffusionTubeMeasurements_MergedAndFixed_2',
+                    shape: 'square',
+                    radius: 6.0,
+                    opacity: 1,
+                    color: 'rgba(126,126,126,1.0)',
+                    dashArray: '',
+                    lineCap: 'butt',
+                    lineJoin: 'miter',
+                    weight: 1,
+                    fill: true,
+                    fillOpacity: 1,
+                    fillColor: 'rgba(27,169,239,1.0)',
+                }
+            }
+            if (feature.properties['local adjusted'] >= 40.000000 && feature.properties['local adjusted'] <=
+                55.422097) {
+                return {
+                    pane: 'pane_DiffusionTubeMeasurements_MergedAndFixed_2',
+                    shape: 'square',
+                    radius: 6.0,
+                    opacity: 1,
+                    color: 'rgba(126,126,126,1.0)',
+                    dashArray: '',
+                    lineCap: 'butt',
+                    lineJoin: 'miter',
+                    weight: 1,
+                    fill: true,
+                    fillOpacity: 1,
+                    fillColor: 'rgba(255,0,0,1.0)',
+                }
+            }
+        }
+        map.createPane('pane_DiffusionTubeMeasurements_MergedAndFixed_2');
+        map.getPane('pane_DiffusionTubeMeasurements_MergedAndFixed_2').style.zIndex = 402;
+        map.getPane('pane_DiffusionTubeMeasurements_MergedAndFixed_2').style['mix-blend-mode'] = 'normal';
+        var layer_DiffusionTubeMeasurements_MergedAndFixed_2 = new L.geoJson(
+            json_DiffusionTubeMeasurements_MergedAndFixed_2, {
+                attribution: '',
+                pane: 'pane_DiffusionTubeMeasurements_MergedAndFixed_2',
+                onEachFeature: pop_DiffusionTubeMeasurements_MergedAndFixed_2,
+                pointToLayer: function (feature, latlng) {
+                    var context = {
+                        feature: feature,
+                        variables: {}
+                    };
+                    return L.shapeMarker(latlng, style_DiffusionTubeMeasurements_MergedAndFixed_2_0(feature));
+                },
+            });
+        bounds_group.addLayer(layer_DiffusionTubeMeasurements_MergedAndFixed_2);
+        map.addLayer(layer_DiffusionTubeMeasurements_MergedAndFixed_2);
+
+
+        ///////////////////////////////////////////////////////////////////////////////////
+        // Legend
+        ///////////////////////////////////////////////////////////////////////////////////
+        var baseMaps = {'OpenStreetMap': layer_OSM,
+                        'OpenStreetMap Grayscale': layer_OSM_gray,
+                        'Stamen Toner': layer_StamenTonerBackground_0};
         L.control.layers(baseMaps, {
-            'AURN sensors': layer_AURN_Soton_Feb19Stats_2,
+            'SCC Diffusion Tube NO<sub>2</sub><br />\
+            <table>\
+                <tr>\
+                    <td style="text-align: center; vertical-align: bottom;">\
+                        <img\
+                            src="legend/DiffusionTubeMeasurements_MergedAndFixed_2_1953740.png" /></td>\
+                    <td> &lt; 40&micro;g/m<sup>3</sup> </td>\
+                </tr>\
+                <tr>\
+                    <td style="text-align: center;"><img\
+                            src="legend/DiffusionTubeMeasurements_MergedAndFixed_2_3745541.png" /></td>\
+                    <td> &gt; 40&micro;g/m<sup>3</sup> </td>\
+                </tr>\
+            </table>': layer_DiffusionTubeMeasurements_MergedAndFixed_2,
+            'AURN PM<sub>2.5</sub>': layer_AURN_Soton_Feb19Stats_2,
             '<img src="legend/sensor_icon_darkblue.png" height=20px /> Breathing Spaces sensors': layer_ActiveSensors_1,
         }, {
             collapsed: false
