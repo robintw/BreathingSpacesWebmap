@@ -63,23 +63,11 @@
         ///////////////////////////////////////////////////////////////////////////////////
         // Background map
         ///////////////////////////////////////////////////////////////////////////////////
-        var layer_StamenTonerBackground_0 = L.tileLayer('http://tile.stamen.com/toner/{z}/{x}/{y}.png', {
-            opacity: 0.3
-        });
-        layer_StamenTonerBackground_0.addTo(map);
-        map.addLayer(layer_StamenTonerBackground_0);
-
         var layer_OSM = L.tileLayer(' https://a.tile.openstreetmap.org/{z}/{x}/{y}.png ', {
         opacity: 0.3
         });
-        // layer_OSM.addTo(map);
-        // map.addLayer(layer_OSM);
-
-        var layer_OSM_gray = L.tileLayer.grayscale(' https://a.tile.openstreetmap.org/{z}/{x}/{y}.png ', {
-        opacity: 0.3
-        });
-        //layer_OSM_gray.addTo(map);
-        // map.addLayer(layer_OSM_gray);
+        layer_OSM.addTo(map);
+        map.addLayer(layer_OSM);
 
         ///////////////////////////////////////////////////////////////////////////////////
         // Active (Breathing Spaces) sensors layer
@@ -256,9 +244,7 @@
         ///////////////////////////////////////////////////////////////////////////////////
         // Legend
         ///////////////////////////////////////////////////////////////////////////////////
-        var baseMaps = {'OpenStreetMap': layer_OSM,
-                        'OpenStreetMap Grayscale': layer_OSM_gray,
-                        'Stamen Toner': layer_StamenTonerBackground_0};
+        var baseMaps = {};
         L.control.layers(baseMaps, {
             'SCC Diffusion Tube NO<sub>2</sub><br />\
             <table>\
