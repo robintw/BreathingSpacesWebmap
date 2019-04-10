@@ -11,9 +11,13 @@
     <link rel="stylesheet" href="css/qgis2web.css">
     <link rel="stylesheet" href="css/fontawesome-all.min.css">
     <style>
-        #map {
-            width: 1070px;
-            height: 571px;
+        body {
+        padding: 0;
+        margin: 0;
+        }
+        html, body, #map {
+        height: 100%;
+        width: 100%;
         }
     </style>
     <title></title>
@@ -54,7 +58,7 @@
              &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &middot;\
              Sensor data from <a href="https://breathingspaces.org.uk/">Breathing Spaces</a>, \
              <a href="https://uk-air.defra.gov.uk/networks/network-info?view=aurn">Defra AURN</a>, \
-<a href="https://www.southampton.gov.uk/environmental-issues/pollution/air-quality/monitoring/nitrogen-dioxide-diffusion-tubes.aspx">SCC</a>'
+             <a href="https://www.southampton.gov.uk/environmental-issues/pollution/air-quality/monitoring/nitrogen-dioxide-diffusion-tubes.aspx">SCC</a> &nbsp; &nbsp; &nbsp;'
         );
         var bounds_group = new L.featureGroup([]);
 
