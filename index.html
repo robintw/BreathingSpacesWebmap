@@ -272,7 +272,7 @@
         });
 
         function pop_Perceptions(feature, layer) {
-            var popupContent = '<h3>' + feature.properties["name"] + '</h3>' + feature.properties['data']['Comment'];
+            var popupContent = '<h3>' + feature.properties["name"] + '</h3>' + feature.properties['data']['Comment'].split('\n').join('<br/>');
             layer.bindPopup(popupContent, {
                 maxHeight: 400
             });
