@@ -84,8 +84,8 @@
         // Active (Breathing Spaces) sensors layer
         ///////////////////////////////////////////////////////////////////////////////////
         function pop_ActiveSensors_1(feature, layer) {
-            var popupContent = "" + 
-            '<iframe src="' + feature.properties['graph_url'] + '" width="450" height="200" frameborder="0"></iframe>'
+            var popupContent = '<iframe src="' + feature.properties['graph_url'] + '" width="450" height="200" frameborder="0"></iframe>' +
+                '<br><a href="https://opennms.computenodes.net/grafana/d/G2NTzy6mk/st-denys-detailed-measurements?orgId=1&var-node=mqtt%3A' + feature.properties['sensor_id'] + '">More details</a>'
             layer.bindPopup(popupContent, {maxWidth:430});
         }
 
