@@ -84,9 +84,9 @@
         // Active (Breathing Spaces) sensors layer
         ///////////////////////////////////////////////////////////////////////////////////
         function pop_ActiveSensors_1(feature, layer) {
-            var popupContent = "<h3>Breathing Spaces " + feature.properties['Name'] + "</h3> <br />" + feature
-                .properties['description']
-            layer.bindPopup(popupContent, {});
+            var popupContent = "" + 
+            '<iframe src="' + feature.properties['graph_url'] + '" width="450" height="200" frameborder="0"></iframe>'
+            layer.bindPopup(popupContent, {maxWidth:430});
         }
 
         function style_ActiveSensors_1_0() {
@@ -286,9 +286,9 @@
         }
 
         PERCEPTIONS_AQ_COLOR = '#1f78b4'
-        PERCEPTIONS_HEALTH_COLOR = '#a6cee3'
+        PERCEPTIONS_HEALTH_COLOR = '#735290'
         PERCEPTIONS_ASSETS_COLOR = '#b2df8a'
-        PERCEPTIONS_CHANGE_COLOR = '#33a02c'
+        PERCEPTIONS_CHANGE_COLOR = '#CDDDDD'
 
         function style_Perceptions(feature, color) {
             return {
