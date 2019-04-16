@@ -191,7 +191,8 @@
         // Diffusion Tubes layer
         ///////////////////////////////////////////////////////////////////////////////////
         function pop_DiffusionTubeMeasurements_MergedAndFixed_2(feature, layer) {
-            var popupContent = '<h3>Diffusion tube at ' + feature.properties["Name"] + '</h3>';
+            var popupContent = '<h3>Diffusion tube at ' + feature.properties["Name"] + '</h3>' +
+                '<b>2017 average:</b> ' + parseFloat(feature.properties['local adjusted']).toFixed(0) + '&micro;g/m<sup>3</sup>'
             layer.bindPopup(popupContent, {
                 maxHeight: 400
             });
