@@ -12,12 +12,15 @@
     <link rel="stylesheet" href="css/fontawesome-all.min.css">
     <style>
         body {
-        padding: 0;
-        margin: 0;
+            padding: 0;
+            margin: 0;
         }
-        html, body, #map {
-        height: 100%;
-        width: 100%;
+
+        html,
+        body,
+        #map {
+            height: 100%;
+            width: 100%;
         }
     </style>
     <title></title>
@@ -26,6 +29,7 @@
 <body>
     <div id="map">
     </div>
+    <script src="js/jquery-3.4.0.min.js"></script>
     <script src="js/qgis2web_expressions.js"></script>
     <script src="js/leaflet.js"></script>
     <script src="js/leaflet-svg-shape-markers.min.js"></script>
@@ -42,6 +46,7 @@
     <script src="data/ActiveSensors_1.js"></script>
     <script src="data/AURN_Soton_Feb19Stats_2.js"></script>
     <script src="data/DiffusionTubeMeasurements_MergedAndFixed_2.js"></script>
+    <script src="data/Perceptions.js"></script>
     <script>
         var map = L.map('map', {
             zoomControl: true,
@@ -68,7 +73,7 @@
         // Background map
         ///////////////////////////////////////////////////////////////////////////////////
         var layer_OSM = L.tileLayer(' https://a.tile.openstreetmap.org/{z}/{x}/{y}.png ', {
-        opacity: 0.4
+            opacity: 0.4
         });
         layer_OSM.addTo(map);
         map.addLayer(layer_OSM);
@@ -245,6 +250,120 @@
         map.addLayer(layer_DiffusionTubeMeasurements_MergedAndFixed_2);
 
 
+
+        ///////////////////////////////////////////////////////////////////////////////////
+        // Perceptions layer
+        ///////////////////////////////////////////////////////////////////////////////////
+
+        var json_Perceptions_AirQuality = json_AllPerceptions.features.filter(function (entry) {
+            return entry.properties.data.Type === 'Air quality concerns';
+        });
+
+        var json_Perceptions_Health = json_AllPerceptions.features.filter(function (entry) {
+            return entry.properties.data.Type === 'Health concerns';
+        });
+
+        var json_Perceptions_Assets = json_AllPerceptions.features.filter(function (entry) {
+            return entry.properties.data.Type === 'Neighbourhood assets';
+        });
+
+        var json_Perceptions_Change = json_AllPerceptions.features.filter(function (entry) {
+            return entry.properties.data.Type === 'Ideas for change';
+        });
+
+        function pop_Perceptions(feature, layer) {
+            var popupContent = '<h3>' + feature.properties["name"] + '</h3>' + feature.properties['data']['Comment'];
+            layer.bindPopup(popupContent, {
+                maxHeight: 400
+            });
+        }
+
+        function speech_bubble_with_color(color) {
+            return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 842.777 690.811" height="26.59" width="26.59" version="1"><path d="M384.252.911c-194.4 11.1-351.2 106-380 230-10.9 46.7-.6 98.9 28.1 142.4 14.2 21.6 36.9 46.2 59 64 70.9 56.9 175.4 93.4 288.5 100.5 21 1.4 63.2 1.4 81.7.1l14.3-1.1 153.6 77.2c84.4 42.4 153.6 76.9 153.8 76.8.1-.2-28.2-44.5-63-98.4-34.9-53.9-63.4-98.2-63.4-98.5 0-.3 7.9-4.3 17.4-8.9 61.9-29.7 112.3-72.1 139.9-117.6 29.1-48 36.1-99.5 20.6-150-31.8-103.2-155.3-185.5-314.8-210-42.9-6.5-92.6-8.9-135.7-6.5z" fill="' +
+                        color + '"/></svg>'
+        }
+
+        PERCEPTIONS_AQ_COLOR = '#1f78b4'
+        PERCEPTIONS_HEALTH_COLOR = '#a6cee3'
+        PERCEPTIONS_ASSETS_COLOR = '#b2df8a'
+        PERCEPTIONS_CHANGE_COLOR = '#33a02c'
+
+        function style_Perceptions(feature, color) {
+            return {
+                rotationAngle: 0.0,
+                rotationOrigin: 'center center',
+                icon: L.divIcon({
+                    className: 'speechbubble_icon',
+                    html: speech_bubble_with_color(color),
+                    iconSize: [26.599999999999998, 26.599999999999998],
+                    iconAnchor: [26, 20]
+                }),
+            }
+        }
+        var layer_Perceptions_AQ = new L.geoJson(
+            json_Perceptions_AirQuality, {
+                attribution: '',
+                onEachFeature: pop_Perceptions,
+                pointToLayer: function (feature, latlng) {
+                    var context = {
+                        feature: feature,
+                        variables: {}
+                    };
+                    return L.marker(latlng,
+                        style_Perceptions(feature, PERCEPTIONS_AQ_COLOR));
+                },
+            });
+        bounds_group.addLayer(layer_Perceptions_AQ);
+        map.addLayer(layer_Perceptions_AQ);
+
+        var layer_Perceptions_Health = new L.geoJson(
+            json_Perceptions_Health, {
+                attribution: '',
+                onEachFeature: pop_Perceptions,
+                pointToLayer: function (feature, latlng) {
+                    var context = {
+                        feature: feature,
+                        variables: {}
+                    };
+                    return L.marker(latlng,
+                        style_Perceptions(feature, PERCEPTIONS_HEALTH_COLOR));
+                },
+            });
+        bounds_group.addLayer(layer_Perceptions_Health);
+        map.addLayer(layer_Perceptions_Health);
+
+        var layer_Perceptions_Assets = new L.geoJson(
+            json_Perceptions_Assets, {
+                attribution: '',
+                onEachFeature: pop_Perceptions,
+                pointToLayer: function (feature, latlng) {
+                    var context = {
+                        feature: feature,
+                        variables: {}
+                    };
+                    return L.marker(latlng,
+                        style_Perceptions(feature, PERCEPTIONS_ASSETS_COLOR));
+                },
+            });
+        bounds_group.addLayer(layer_Perceptions_Assets);
+        map.addLayer(layer_Perceptions_Assets);
+
+        var layer_Perceptions_Change = new L.geoJson(
+            json_Perceptions_Change, {
+                attribution: '',
+                onEachFeature: pop_Perceptions,
+                pointToLayer: function (feature, latlng) {
+                    var context = {
+                        feature: feature,
+                        variables: {}
+                    };
+                    return L.marker(latlng,
+                        style_Perceptions(feature, PERCEPTIONS_CHANGE_COLOR));
+                },
+            });
+        bounds_group.addLayer(layer_Perceptions_Change);
+        map.addLayer(layer_Perceptions_Change);
+
         ///////////////////////////////////////////////////////////////////////////////////
         // Legend
         ///////////////////////////////////////////////////////////////////////////////////
@@ -266,6 +385,11 @@
             </table>': layer_DiffusionTubeMeasurements_MergedAndFixed_2,
             'AURN PM<sub>2.5</sub>': layer_AURN_Soton_Feb19Stats_2,
             '<img src="legend/sensor_icon_darkblue.png" height=20px /> Breathing Spaces sensors': layer_ActiveSensors_1,
+            [speech_bubble_with_color(PERCEPTIONS_AQ_COLOR) + '&nbsp; &nbsp; Perceptions: Air Quality']: layer_Perceptions_AQ,
+            [speech_bubble_with_color(PERCEPTIONS_HEALTH_COLOR) + '&nbsp; &nbsp; Perceptions: Health']: layer_Perceptions_Health,
+            [speech_bubble_with_color(PERCEPTIONS_ASSETS_COLOR) + '&nbsp; &nbsp; Perceptions: Assets']: layer_Perceptions_Assets,
+            [speech_bubble_with_color(PERCEPTIONS_CHANGE_COLOR) + '&nbsp; &nbsp; Perceptions: Change']: layer_Perceptions_Change,
+
         }, {
             collapsed: false
         }).addTo(map);
