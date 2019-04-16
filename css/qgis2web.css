@@ -9,6 +9,14 @@
             background-color: #ffffff00;
         }
 
+        .leaflet-control-layers-selector {
+            margin-left: 12px;
+        }
+
+        .legend-subitem {
+            padding-left: 24px;
+        }
+
         th {
             text-align: left;
             vertical-align: top;

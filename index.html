@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="css/leaflet.css">
     <link rel="stylesheet" href="css/qgis2web.css">
     <link rel="stylesheet" href="css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="css/leaflet.groupedlayercontrol.min.css">
     <style>
         body {
             padding: 0;
@@ -40,6 +41,7 @@
     <script src="js/rbush.min.js"></script>
     <script src="js/labelgun.min.js"></script>
     <script src="js/labels.js"></script>
+    <script src="js/leaflet.groupedlayercontrol.min.js"></script>
 
     <script src="js/TileLayer.Grayscale.js"></script>
 
@@ -368,29 +370,33 @@
         // Legend
         ///////////////////////////////////////////////////////////////////////////////////
         var baseMaps = {};
-        L.control.layers(baseMaps, {
+        var groupedOverlays = {
+            'Sensors': {
             'SCC Diffusion Tubes (NO<sub>2</sub>) (2017)<br />\
             <table>\
                 <tr>\
-                    <td style="text-align: center; vertical-align: bottom;">\
+                    <td class="legend-subitem" style="text-align: center; vertical-align: bottom;">\
                         <img\
                             src="legend/DiffusionTubeMeasurements_MergedAndFixed_2_1953740.png" /></td>\
                     <td> Below legal limit (&lt; 40&micro;g/m<sup>3</sup>) </td>\
                 </tr>\
                 <tr>\
-                    <td style="text-align: center;"><img\
+                    <td class="legend-subitem" style="text-align: center;"><img\
                             src="legend/DiffusionTubeMeasurements_MergedAndFixed_2_3745541.png" /></td>\
                     <td> Above legal limit (&gt; 40&micro;g/m<sup>3</sup>) </td>\
                 </tr>\
             </table>': layer_DiffusionTubeMeasurements_MergedAndFixed_2,
             'AURN PM<sub>2.5</sub>': layer_AURN_Soton_Feb19Stats_2,
-            '<img src="legend/sensor_icon_darkblue.png" height=20px /> Breathing Spaces sensors': layer_ActiveSensors_1,
-            [speech_bubble_with_color(PERCEPTIONS_AQ_COLOR) + '&nbsp; &nbsp; Perceptions: Air Quality']: layer_Perceptions_AQ,
-            [speech_bubble_with_color(PERCEPTIONS_HEALTH_COLOR) + '&nbsp; &nbsp; Perceptions: Health']: layer_Perceptions_Health,
-            [speech_bubble_with_color(PERCEPTIONS_ASSETS_COLOR) + '&nbsp; &nbsp; Perceptions: Assets']: layer_Perceptions_Assets,
-            [speech_bubble_with_color(PERCEPTIONS_CHANGE_COLOR) + '&nbsp; &nbsp; Perceptions: Change']: layer_Perceptions_Change,
-
-        }, {
+            '<img src="legend/sensor_icon_darkblue.png" height=20px /> Breathing Spaces sensors': layer_ActiveSensors_1
+            },
+            'Community perceptions': {
+            [speech_bubble_with_color(PERCEPTIONS_AQ_COLOR) + '&nbsp; Air Quality concerns']: layer_Perceptions_AQ,
+            [speech_bubble_with_color(PERCEPTIONS_HEALTH_COLOR) + '&nbsp; Health concerns']: layer_Perceptions_Health,
+            [speech_bubble_with_color(PERCEPTIONS_ASSETS_COLOR) + '&nbsp; Community assets']: layer_Perceptions_Assets,
+            [speech_bubble_with_color(PERCEPTIONS_CHANGE_COLOR) + '&nbsp; Ideas for change']: layer_Perceptions_Change,
+            }
+        };
+        L.control.groupedLayers(baseMaps, groupedOverlays, {
             collapsed: false
         }).addTo(map);
         setBounds();
