@@ -378,7 +378,11 @@
         ///////////////////////////////////////////////////////////////////////////////////
         var baseMaps = {};
         var groupedOverlays = {
-            'Sensors': {
+            'Real-time data': {
+                '<img src="legend/sensor_icon_darkblue.png" height=20px /> Breathing Spaces sensors': layer_ActiveSensors_1,
+                'AURN PM<sub>2.5</sub>': layer_AURN_Soton_Feb19Stats_2
+            },
+            'Historical data': {
             'SCC Diffusion Tubes (NO<sub>2</sub>) (2017)<br />\
             <table>\
                 <tr>\
@@ -393,8 +397,6 @@
                     <td> Above legal limit (&gt; 40&micro;g/m<sup>3</sup>) </td>\
                 </tr>\
             </table>': layer_DiffusionTubeMeasurements_MergedAndFixed_2,
-            'AURN PM<sub>2.5</sub>': layer_AURN_Soton_Feb19Stats_2,
-            '<img src="legend/sensor_icon_darkblue.png" height=20px /> Breathing Spaces sensors': layer_ActiveSensors_1
             },
             'Community perceptions': {
             [speech_bubble_with_color(PERCEPTIONS_AQ_COLOR) + '&nbsp; Air Quality concerns']: layer_Perceptions_AQ,
