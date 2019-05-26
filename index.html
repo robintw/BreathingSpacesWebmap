@@ -506,9 +506,7 @@
 
         function legend_for_choropleth_layer(layer, name, units) {
             var limits = layer.options.limits
-            console.log(limits)
             var colors = layer.options.colors
-            console.log(colors)
             var labels = []
 
             HTML = name
@@ -556,7 +554,7 @@
                     <td> Above legal limit (&gt; 40&micro;g/m<sup>3</sup>) </td>\
                 </tr>\
             </table>': layer_DiffusionTubeMeasurements_MergedAndFixed_2,
-            [legend_for_choropleth_layer(layer_PCM, 'PCM', '&micro;g/m<sup>3</sup>')]: layer_PCM
+            [legend_for_choropleth_layer(layer_PCM, 'Defra PCM (NOx) (2017)', '&micro;g/m<sup>3</sup>')]: layer_PCM
             },
             'Community perceptions': {
             [speech_bubble_with_color(PERCEPTIONS_AQ_COLOR) + '&nbsp; Air Quality concerns']: layer_Perceptions_AQ,
