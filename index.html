@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="css/fontawesome-all.min.css">
     <link rel="stylesheet" href="css/leaflet.groupedlayercontrol.min.css">
     <link rel="stylesheet" href="css/leaflet-control-credits.css" />
+    <link rel="stylesheet" href="css/custom.css">
     <style>
         body {
             padding: 0;
@@ -47,13 +48,14 @@
     <script src="js/leaflet.groupedlayercontrol.min.js"></script>
 
     <script src="js/leaflet-control-credits.js"></script>
-
+    <script src="js/choropleth.js"></script>
     <script src="js/TileLayer.Grayscale.js"></script>
 
     <script src="data/ActiveSensors_1.js"></script>
     <script src="data/AURN_Soton_Feb19Stats_2.js"></script>
     <script src="data/DiffusionTubeMeasurements_MergedAndFixed_2.js"></script>
     <script src="data/Perceptions.js"></script>
+    <script src="data/PCM.js"></script>
     <script>
         var map = L.map('map', {
             zoomControl: true,
@@ -374,6 +376,163 @@
         //map.addLayer(layer_Perceptions_Change);
 
         ///////////////////////////////////////////////////////////////////////////////////
+        // PCM layers
+        ///////////////////////////////////////////////////////////////////////////////////
+    function pop_PCM(feature, layer) {
+            var popupContent = '<table>\
+        <tr>\
+            <td colspan="2">' + (feature.properties['pm252017g'] !== null ? Autolinker.link(String(feature.properties['pm252017g'])) : '') + '</td>\
+        </tr>\
+        <tr>\
+            <td colspan="2">' + (feature.properties['pm102017g'] !== null ? Autolinker.link(String(feature.properties['pm102017g'])) : '') + '</td>\
+        </tr>\
+        <tr>\
+            <td colspan="2">' + (feature.properties['nox2017'] !== null ? Autolinker.link(String(feature.properties['nox2017'])) : '') + '</td>\
+        </tr>\
+        <tr>\
+            <td colspan="2">' + (feature.properties['no22017'] !== null ? Autolinker.link(String(feature.properties['no22017'])) : '') + '</td>\
+        </tr>\
+    </table>';
+            layer.bindPopup(popupContent, { maxHeight: 400 });
+        }
+
+        // function style_PCM(feature) {
+        //     if (feature.properties['pm252017g'] < 7.565463) {
+        //         return {
+        //             pane: 'pane_PCM',
+        //             opacity: 0.5,
+        //             color: 'rgba(255,255,255,1.0)',
+        //             dashArray: '',
+        //             lineCap: 'butt',
+        //             lineJoin: 'miter',
+        //             weight: 1.0,
+        //             fill: true,
+        //             fillOpacity: 0.5,
+        //             fillColor: 'rgba(255,255,255,1.0)',
+        //         }
+        //     }
+        //     if (feature.properties['pm252017g'] >= 7.565463 && feature.properties['pm252017g'] <= 8.741666) {
+        //         return {
+        //             pane: 'pane_PCM',
+        //             opacity: 0.5,
+        //             color: 'rgba(35,35,35,1.0)',
+        //             dashArray: '',
+        //             lineCap: 'butt',
+        //             lineJoin: 'miter',
+        //             weight: 1.0,
+        //             fill: true,
+        //             fillOpacity: 0.5,
+        //             fillColor: 'rgba(68,1,84,1.0)',
+        //         }
+        //     }
+        //     if (feature.properties['pm252017g'] >= 8.741666 && feature.properties['pm252017g'] <= 9.917870) {
+        //         return {
+        //             pane: 'pane_PCM',
+        //             opacity: 0.5,
+        //             color: 'rgba(35,35,35,1.0)',
+        //             dashArray: '',
+        //             lineCap: 'butt',
+        //             lineJoin: 'miter',
+        //             weight: 1.0,
+        //             fill: true,
+        //             fillOpacity: 0.5,
+        //             fillColor: 'rgba(58,82,139,1.0)',
+        //         }
+        //     }
+        //     if (feature.properties['pm252017g'] >= 9.917870 && feature.properties['pm252017g'] <= 11.094073) {
+        //         return {
+        //             pane: 'pane_PCM',
+        //             opacity: 0.5,
+        //             color: 'rgba(35,35,35,1.0)',
+        //             dashArray: '',
+        //             lineCap: 'butt',
+        //             lineJoin: 'miter',
+        //             weight: 1.0,
+        //             fill: true,
+        //             fillOpacity: 0.5,
+        //             fillColor: 'rgba(32,144,141,1.0)',
+        //         }
+        //     }
+        //     if (feature.properties['pm252017g'] >= 11.094073 && feature.properties['pm252017g'] <= 12.270277) {
+        //         return {
+        //             pane: 'pane_PCM',
+        //             opacity: 0.5,
+        //             color: 'rgba(35,35,35,1.0)',
+        //             dashArray: '',
+        //             lineCap: 'butt',
+        //             lineJoin: 'miter',
+        //             weight: 1.0,
+        //             fill: true,
+        //             fillOpacity: 0.5,
+        //             fillColor: 'rgba(93,201,98,1.0)',
+        //         }
+        //     }
+        //     if (feature.properties['pm252017g'] >= 12.270277 && feature.properties['pm252017g'] <= 13.446480) {
+        //         return {
+        //             pane: 'pane_PCM',
+        //             opacity: 0.5,
+        //             color: 'rgba(35,35,35,1.0)',
+        //             dashArray: '',
+        //             lineCap: 'butt',
+        //             lineJoin: 'miter',
+        //             weight: 1.0,
+        //             fill: true,
+        //             fillOpacity: 0.5,
+        //             fillColor: 'rgba(253,231,37,1.0)',
+        //         }
+        //     }
+        // }
+        // map.createPane('pane_PCM');
+        // map.getPane('pane_PCM').style.zIndex = 401;
+        // map.getPane('pane_PCM').style['mix-blend-mode'] = 'normal';
+        // var layer_PCM = new L.geoJson(json_PCM, {
+        //     pane: 'pane_PCM',
+        //     onEachFeature: pop_PCM,
+        //     style: style_PCM,
+        // });
+
+        var layer_PCM = L.choropleth(json_PCM, {
+                valueProperty: 'nox2017', // which property in the features to use
+                scale: 'Viridis', // chroma.js scale - include as many as you like
+                steps: 5, // number of breaks or steps in range
+                mode: 'e', // q for quantile, e for equidistant, k for k-means
+                style: {
+                    color: '#111111', // border color
+                    weight: 1,
+                    fillOpacity: 0.3
+                },
+                onEachFeature: pop_PCM
+            }).addTo(map)
+
+        function legend_for_choropleth_layer(layer, name, units) {
+            var limits = layer.options.limits
+            console.log(limits)
+            var colors = layer.options.colors
+            console.log(colors)
+            var labels = []
+
+            HTML = name
+
+            limits.forEach(function (limit, index) {
+                if (index === 0) {
+                    var to = parseFloat(limits[index]).toFixed(1);
+                    var range_str = "< " + to;
+                }
+                else {
+                    var from = parseFloat(limits[index - 1]).toFixed(1);
+                    var to = parseFloat(limits[index]).toFixed(1);
+                    var range_str = from + "-" + to;
+                }
+                
+                labels.push('<li class="sublegend-item"><div class="sublegend-color" style="background-color: ' + colors[index] + '">&nbsp;</div>&nbsp;' + range_str + units + '</li>')
+            })
+
+            HTML += '<ul class="sublegend">' + labels.join('') + '</ul>'
+
+            return HTML;
+        }
+
+        ///////////////////////////////////////////////////////////////////////////////////
         // Legend
         ///////////////////////////////////////////////////////////////////////////////////
         var baseMaps = {};
@@ -397,6 +556,7 @@
                     <td> Above legal limit (&gt; 40&micro;g/m<sup>3</sup>) </td>\
                 </tr>\
             </table>': layer_DiffusionTubeMeasurements_MergedAndFixed_2,
+            [legend_for_choropleth_layer(layer_PCM, 'PCM', '&micro;g/m<sup>3</sup>')]: layer_PCM
             },
             'Community perceptions': {
             [speech_bubble_with_color(PERCEPTIONS_AQ_COLOR) + '&nbsp; Air Quality concerns']: layer_Perceptions_AQ,
