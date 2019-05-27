@@ -381,16 +381,20 @@
     function pop_PCM(feature, layer) {
             var popupContent = '<table>\
         <tr>\
-            <td colspan="2">' + (feature.properties['pm252017g'] !== null ? Autolinker.link(String(feature.properties['pm252017g'])) : '') + '</td>\
+            <td><b>PM2.5</b></td>\
+            <td>' + parseFloat(feature.properties['pm252017g']).toFixed(1) + '&micro;g/m<sup>3</sup></td>\
         </tr>\
         <tr>\
-            <td colspan="2">' + (feature.properties['pm102017g'] !== null ? Autolinker.link(String(feature.properties['pm102017g'])) : '') + '</td>\
+            <td><b>PM10</b></td>\
+            <td>' + parseFloat(feature.properties['pm102017g']).toFixed(1) + '&micro;g/m<sup>3</sup></td>\
         </tr>\
         <tr>\
-            <td colspan="2">' + (feature.properties['nox2017'] !== null ? Autolinker.link(String(feature.properties['nox2017'])) : '') + '</td>\
+            <td><b>NOx</b></td>\
+            <td>' + parseFloat(feature.properties['nox2017']).toFixed(1) + '&micro;g/m<sup>3</sup></td>\
         </tr>\
         <tr>\
-            <td colspan="2">' + (feature.properties['no22017'] !== null ? Autolinker.link(String(feature.properties['no22017'])) : '') + '</td>\
+            <td><b>NO2</b></td>\
+            <td>' + parseFloat(feature.properties['no22017']).toFixed(1) + '&micro;g/m<sup>3</sup></td>\
         </tr>\
     </table>';
             layer.bindPopup(popupContent, { maxHeight: 400 });
