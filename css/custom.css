@@ -2,6 +2,8 @@
     width: 20px;
     border: 1px solid #666666;
     display: inline-block;
+    fill-opacity: 0.3;
+    opacity: 0.5;
 }
 
 .sublegend-item {
