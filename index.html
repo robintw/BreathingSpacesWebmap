@@ -259,8 +259,13 @@
             });
         bounds_group.addLayer(layer_DiffusionTubeMeasurements_MergedAndFixed_2);
 
+        layer_DiffusionTubeMeasurements_MergedAndFixed_2.on('add', function () {
+            $('#legend_DiffusionTubeMeasurements').show()
+        });
 
-
+        layer_DiffusionTubeMeasurements_MergedAndFixed_2.on('remove', function () {
+            $('#legend_DiffusionTubeMeasurements').hide()
+        });
         ///////////////////////////////////////////////////////////////////////////////////
         // Perceptions layer
         ///////////////////////////////////////////////////////////////////////////////////
@@ -324,7 +329,6 @@
                 },
             });
         bounds_group.addLayer(layer_Perceptions_AQ);
-        //map.addLayer(layer_Perceptions_AQ);
 
         var layer_Perceptions_Health = new L.geoJson(
             json_Perceptions_Health, {
@@ -340,7 +344,6 @@
                 },
             });
         bounds_group.addLayer(layer_Perceptions_Health);
-        //map.addLayer(layer_Perceptions_Health);
 
         var layer_Perceptions_Assets = new L.geoJson(
             json_Perceptions_Assets, {
@@ -356,7 +359,6 @@
                 },
             });
         bounds_group.addLayer(layer_Perceptions_Assets);
-        //map.addLayer(layer_Perceptions_Assets);
 
         var layer_Perceptions_Change = new L.geoJson(
             json_Perceptions_Change, {
@@ -372,7 +374,6 @@
                 },
             });
         bounds_group.addLayer(layer_Perceptions_Change);
-        //map.addLayer(layer_Perceptions_Change);
 
         ///////////////////////////////////////////////////////////////////////////////////
         // PCM layers
@@ -486,7 +487,7 @@
                 labels.push('<li class="sublegend-item"><div class="sublegend-color" style="background-color: ' + colors[index] + '">&nbsp;</div>&nbsp;' + range_str + units + '</li>')
             })
 
-            HTML += '<ul id="' + id + '" class="sublegend">' + labels.join('') + '</ul>'
+            HTML += '<ul id="' + id + '" class="sublegend" style="display: none">' + labels.join('') + '</ul>'
 
             return HTML;
         }
@@ -502,7 +503,7 @@
             },
             'Historical data': {
             'SCC Diffusion Tubes (NO<sub>2</sub>) (2017)<br />\
-            <table>\
+            <table id="legend_DiffusionTubeMeasurements" style="display: none">\
                 <tr>\
                     <td class="legend-subitem" style="text-align: center; vertical-align: bottom;">\
                         <img\
