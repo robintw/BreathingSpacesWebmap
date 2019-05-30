@@ -34,7 +34,7 @@
 <body>
     <div id="map">
     </div>
-    <script src="js/jquery-3.4.0.min.js"></script>
+    <script src="js/jquery-3.4.1.min.js"></script>
     <script src="js/qgis2web_expressions.js"></script>
     <script src="js/leaflet.js"></script>
     <script src="js/leaflet-svg-shape-markers.min.js"></script>
@@ -433,7 +433,15 @@
                     fillColor: '#ffffff'
                 },
                 onEachFeature: pop_PCM_2017
-            })
+            });
+
+        layer_PCM_2017.on('add', function () {
+            $('#legend_PCM_2017').show()
+        });
+
+        layer_PCM_2017.on('remove', function () {
+            $('#legend_PCM_2017').hide()
+        });
 
         var layer_PCM_2016 = L.choropleth(json_PCM_2016, {
                 valueProperty: 'nox2016', // which property in the features to use
@@ -449,7 +457,15 @@
                 onEachFeature: pop_PCM_2016
             })
 
-        function legend_for_choropleth_layer(layer, name, units) {
+        layer_PCM_2016.on('add', function() {
+            $('#legend_PCM_2016').show()
+        });
+
+        layer_PCM_2016.on('remove', function () {
+            $('#legend_PCM_2016').hide()
+        });
+
+        function legend_for_choropleth_layer(layer, name, units, id) {
             var limits = layer.options.limits
             var colors = layer.options.colors
             var labels = []
@@ -470,7 +486,7 @@
                 labels.push('<li class="sublegend-item"><div class="sublegend-color" style="background-color: ' + colors[index] + '">&nbsp;</div>&nbsp;' + range_str + units + '</li>')
             })
 
-            HTML += '<ul class="sublegend">' + labels.join('') + '</ul>'
+            HTML += '<ul id="' + id + '" class="sublegend">' + labels.join('') + '</ul>'
 
             return HTML;
         }
@@ -499,8 +515,8 @@
                     <td> Above legal limit (&gt; 40&micro;g/m<sup>3</sup>) </td>\
                 </tr>\
             </table>': layer_DiffusionTubeMeasurements_MergedAndFixed_2,
-            [legend_for_choropleth_layer(layer_PCM_2016, 'Defra PCM (NOx) (2016)', '&micro;g/m<sup>3</sup>')]: layer_PCM_2016,
-            [legend_for_choropleth_layer(layer_PCM_2017, 'Defra PCM (NOx) (2017)', '&micro;g/m<sup>3</sup>')]: layer_PCM_2017
+            [legend_for_choropleth_layer(layer_PCM_2016, 'Defra PCM (NOx) (2016)', '&micro;g/m<sup>3</sup>', 'legend_PCM_2016')]: layer_PCM_2016,
+            [legend_for_choropleth_layer(layer_PCM_2017, 'Defra PCM (NOx) (2017)', '&micro;g/m<sup>3</sup>', 'legend_PCM_2017')]: layer_PCM_2017
 
             },
             'Community perceptions': {
