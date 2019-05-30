@@ -15,3 +15,8 @@
     padding-inline-start: 24px;
     margin-top: 0px;
 }
+
+.leaflet-control-layers {
+    max-height: 600px;
+    overflow: auto;
+}
