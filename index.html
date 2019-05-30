@@ -85,7 +85,6 @@
             opacity: 0.4
         });
         layer_OSM.addTo(map);
-        map.addLayer(layer_OSM);
 
         ///////////////////////////////////////////////////////////////////////////////////
         // Active (Breathing Spaces) sensors layer
@@ -258,7 +257,6 @@
                 },
             });
         bounds_group.addLayer(layer_DiffusionTubeMeasurements_MergedAndFixed_2);
-        map.addLayer(layer_DiffusionTubeMeasurements_MergedAndFixed_2);
 
 
 
@@ -507,7 +505,7 @@
                     fillColor: '#ffffff'
                 },
                 onEachFeature: pop_PCM
-            }).addTo(map)
+            })
 
         function legend_for_choropleth_layer(layer, name, units) {
             var limits = layer.options.limits
