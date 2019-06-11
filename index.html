@@ -425,8 +425,9 @@
         var layer_PCM_2017 = L.choropleth(json_PCM_2017, {
                 valueProperty: 'nox2017', // which property in the features to use
                 scale: 'YlOrRd', // chroma.js scale - include as many as you like
-                steps: 5, // number of breaks or steps in range
-                mode: 'e', // q for quantile, e for equidistant, k for k-means
+                //steps: 5, // number of breaks or steps in range
+                //mode: 'e', // q for quantile, e for equidistant, k for k-means
+                limits: [30, 40, 50, 60, 70],
                 style: {
                     color: '#111111', // border color
                     weight: 1,
@@ -447,8 +448,9 @@
         var layer_PCM_2016 = L.choropleth(json_PCM_2016, {
                 valueProperty: 'nox2016', // which property in the features to use
                 scale: 'YlOrRd', // chroma.js scale - include as many as you like
-                steps: 5, // number of breaks or steps in range
-                mode: 'e', // q for quantile, e for equidistant, k for k-means
+                // steps: 5, // number of breaks or steps in range
+                // mode: 'e', // q for quantile, e for equidistant, k for k-means
+                limits: [30, 40, 50, 60, 70],
                 style: {
                     color: '#111111', // border color
                     weight: 1,
