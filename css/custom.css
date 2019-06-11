@@ -1,3 +1,17 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+
+html,
+body,
+#map {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
 .sublegend-color {
     width: 20px;
     border: 1px solid #666666;
