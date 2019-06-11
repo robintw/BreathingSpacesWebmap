@@ -28,6 +28,18 @@
             margin: 0;
         }
     </style>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141833019-2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-141833019-2');
+    </script>
     <title></title>
 </head>
 
@@ -425,13 +437,13 @@
 
         var layer_PCM_2017 = L.choropleth(json_PCM_2017, {
                 valueProperty: 'nox2017', // which property in the features to use
-                scale: 'Viridis', // chroma.js scale - include as many as you like
+                scale: 'YlOrRd', // chroma.js scale - include as many as you like
                 steps: 5, // number of breaks or steps in range
                 mode: 'e', // q for quantile, e for equidistant, k for k-means
                 style: {
                     color: '#111111', // border color
                     weight: 1,
-                    fillOpacity: 0.3,
+                    fillOpacity: 0.5,
                     fillColor: '#ffffff'
                 },
                 onEachFeature: pop_PCM_2017
@@ -447,13 +459,13 @@
 
         var layer_PCM_2016 = L.choropleth(json_PCM_2016, {
                 valueProperty: 'nox2016', // which property in the features to use
-                scale: 'Viridis', // chroma.js scale - include as many as you like
+                scale: 'YlOrRd', // chroma.js scale - include as many as you like
                 steps: 5, // number of breaks or steps in range
                 mode: 'e', // q for quantile, e for equidistant, k for k-means
                 style: {
                     color: '#111111', // border color
                     weight: 1,
-                    fillOpacity: 0.3,
+                    fillOpacity: 0.5,
                     fillColor: '#ffffff'
                 },
                 onEachFeature: pop_PCM_2016
