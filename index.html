@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="css/leaflet.groupedlayercontrol.min.css">
     <link rel="stylesheet" href="css/leaflet-control-credits.css" />
     <link rel="stylesheet" href="css/custom.css">
-    
+
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141833019-2"></script>
     <script>
@@ -259,6 +259,7 @@
         bounds_group.addLayer(layer_DiffusionTubeMeasurements_MergedAndFixed_2);
 
         layer_DiffusionTubeMeasurements_MergedAndFixed_2.on('add', function () {
+            gtag('event', 'select_content', { content_type : 'Diffusion Tubes' });
             $('#legend_DiffusionTubeMeasurements').show()
         });
 
@@ -458,6 +459,7 @@
             })
 
         layer_PCM_2016.on('add', function() {
+            gtag('event', 'select_content', { content_type : 'PCM' });
             $('#legend_PCM_2016').show()
         });
 
