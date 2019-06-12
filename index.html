@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="css/fontawesome-all.min.css">
     <link rel="stylesheet" href="css/leaflet.groupedlayercontrol.min.css">
     <link rel="stylesheet" href="css/leaflet-control-credits.css" />
+    <link rel="stylesheet" href="css/Leaflet.GraphicScale.min.css"/>
     <link rel="stylesheet" href="css/custom.css">
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -48,6 +49,7 @@
     <script src="js/leaflet-control-credits.js"></script>
     <script src="js/choropleth.js"></script>
     <script src="js/TileLayer.Grayscale.js"></script>
+    <script src="js/Leaflet.GraphicScale.min.js"></script>
 
     <script src="data/ActiveSensors_1.js"></script>
     <script src="data/AURN_Soton_Feb19Stats_2.js"></script>
@@ -544,7 +546,7 @@
             collapsed: false
         }).addTo(map);
 
-        L.control.scale({position: 'bottomright'}).addTo(map);
+        L.control.graphicScale({position: 'bottomright', fill: 'fill'}).addTo(map);
 
         var credctrl = L.controlCredits({
                 image: "./images/logo.jpeg",
