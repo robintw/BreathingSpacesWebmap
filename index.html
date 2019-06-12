@@ -328,6 +328,9 @@
                         style_Perceptions(feature, PERCEPTIONS_AQ_COLOR));
                 },
             });
+        layer_Perceptions_AQ.on('add', function () {
+            gtag('event', 'select_content', { content_type : 'Perceptions AQ' });
+        });
         bounds_group.addLayer(layer_Perceptions_AQ);
 
         var layer_Perceptions_Health = new L.geoJson(
@@ -343,6 +346,9 @@
                         style_Perceptions(feature, PERCEPTIONS_HEALTH_COLOR));
                 },
             });
+        layer_Perceptions_Health.on('add', function () {
+            gtag('event', 'select_content', { content_type : 'Perceptions Health' });
+        });
         bounds_group.addLayer(layer_Perceptions_Health);
 
         var layer_Perceptions_Assets = new L.geoJson(
@@ -358,6 +364,9 @@
                         style_Perceptions(feature, PERCEPTIONS_ASSETS_COLOR));
                 },
             });
+        layer_Perceptions_Assets.on('add', function () {
+            gtag('event', 'select_content', { content_type : 'Perceptions Assets' });
+        });
         bounds_group.addLayer(layer_Perceptions_Assets);
 
         var layer_Perceptions_Change = new L.geoJson(
@@ -373,6 +382,9 @@
                         style_Perceptions(feature, PERCEPTIONS_CHANGE_COLOR));
                 },
             });
+        layer_Perceptions_Change.on('add', function () {
+            gtag('event', 'select_content', { content_type : 'Perceptions Change' });
+        });
         bounds_group.addLayer(layer_Perceptions_Change);
 
         ///////////////////////////////////////////////////////////////////////////////////
@@ -438,6 +450,7 @@
             });
 
         layer_PCM_2017.on('add', function () {
+            gtag('event', 'select_content', { content_type : 'PCM 2017' });
             $('#legend_PCM_2017').show()
         });
 
@@ -461,7 +474,7 @@
             })
 
         layer_PCM_2016.on('add', function() {
-            gtag('event', 'select_content', { content_type : 'PCM' });
+            gtag('event', 'select_content', { content_type : 'PCM 2016' });
             $('#legend_PCM_2016').show()
         });
 
@@ -533,6 +546,8 @@
         L.control.groupedLayers(baseMaps, groupedOverlays, {
             collapsed: false
         }).addTo(map);
+
+        L.control.scale({position: 'bottomright'}).addTo(map);
 
         var credctrl = L.controlCredits({
                 image: "./images/logo.jpeg",
