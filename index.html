@@ -451,8 +451,14 @@
             });
 
         layer_PCM_2017.on('add', function () {
-            gtag('event', 'select_content', { content_type : 'PCM 2017' });
-            $('#legend_PCM_2017').show()
+            setTimeout(function() {
+                map.removeLayer(layer_PCM_2016);
+                gtag('event', 'select_content', { content_type : 'PCM 2017' });
+                $('#legend_PCM_2017').show()
+            });
+
+
+
         });
 
         layer_PCM_2017.on('remove', function () {
@@ -473,8 +479,14 @@
             })
 
         layer_PCM_2016.on('add', function() {
-            gtag('event', 'select_content', { content_type : 'PCM 2016' });
-            $('#legend_PCM_2016').show()
+            setTimeout(function() {
+                map.removeLayer(layer_PCM_2017);
+                gtag('event', 'select_content', { content_type : 'PCM 2016' });
+                $('#legend_PCM_2016').show()
+            });
+
+
+
         });
 
         layer_PCM_2016.on('remove', function () {
@@ -542,9 +554,11 @@
             [speech_bubble_with_color(PERCEPTIONS_CHANGE_COLOR) + '&nbsp; Ideas for change']: layer_Perceptions_Change,
             }
         };
-        L.control.groupedLayers(baseMaps, groupedOverlays, {
+        var layersControl = L.control.groupedLayers(baseMaps, groupedOverlays, {
             collapsed: false
-        }).addTo(map);
+        });
+        layersControl.addTo(map);
+
 
         L.control.graphicScale({position: 'bottomright', fill: 'fill'}).addTo(map);
 
