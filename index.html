@@ -451,14 +451,13 @@
             });
 
         layer_PCM_2017.on('add', function () {
+            // Need setTimeout so that we don't get multiple
+            // onadd/onremove events raised
             setTimeout(function() {
                 map.removeLayer(layer_PCM_2016);
                 gtag('event', 'select_content', { content_type : 'PCM 2017' });
                 $('#legend_PCM_2017').show()
             });
-
-
-
         });
 
         layer_PCM_2017.on('remove', function () {
@@ -479,14 +478,13 @@
             })
 
         layer_PCM_2016.on('add', function() {
+            // Need setTimeout so that we don't get multiple
+            // onadd/onremove events raised
             setTimeout(function() {
                 map.removeLayer(layer_PCM_2017);
                 gtag('event', 'select_content', { content_type : 'PCM 2016' });
                 $('#legend_PCM_2016').show()
             });
-
-
-
         });
 
         layer_PCM_2016.on('remove', function () {
@@ -554,8 +552,15 @@
             [speech_bubble_with_color(PERCEPTIONS_CHANGE_COLOR) + '&nbsp; Ideas for change']: layer_Perceptions_Change,
             }
         };
+
+        if (L.Browser.mobile) {
+            layersControlCollapsed = true;
+        } else {
+            layersControlCollapsed = false;
+        }
+
         var layersControl = L.control.groupedLayers(baseMaps, groupedOverlays, {
-            collapsed: false
+            collapsed: layersControlCollapsed
         });
         layersControl.addTo(map);
 
