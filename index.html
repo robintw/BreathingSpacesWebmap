@@ -498,7 +498,7 @@
             var colors = layer.options.colors
             var labels = []
 
-            HTML = name + ' <a class="infolink" href="#" onclick="showInfoDialog(' + info_content + ')">info</a>'
+            HTML = name + ' <a class="infolink" href="#" onclick="showInfoDialog(' + info_content + ')"><img class="infobutton" src="images/questionbutton.svg"></a>'
 
             limits.forEach(function (limit, index) {
                 if (index === 0) {
@@ -588,12 +588,12 @@
         var groupedOverlays = {
             'Current data': {
                 '<img src="legend/sensor_icon_darkblue.png" height=20px /> Breathing Spaces sensors\
-                <a class="infolink" href="#" onclick="showInfoDialog(INFO_BREATHING_SPACES)">info</a>': layer_ActiveSensors_1,
+                <a class="infolink" href="#" onclick="showInfoDialog(INFO_BREATHING_SPACES)"><img class="infobutton" src="images/questionbutton.svg"></a>': layer_ActiveSensors_1,
                 'AURN PM<sub>2.5</sub>\
-                <a class="infolink" href="#" onclick="showInfoDialog(INFO_AURN)">info</a>': layer_AURN_Soton_Feb19Stats_2
+                <a class="infolink" href="#" onclick="showInfoDialog(INFO_AURN)"><img class="infobutton" src="images/questionbutton.svg"></a>': layer_AURN_Soton_Feb19Stats_2
             },
             'Historical data': {
-            'SCC Diffusion Tubes (NO<sub>2</sub>) (2017) <a class="infolink" href="#" onclick="showInfoDialog(INFO_DIFFUSION_TUBES)">info</a><br />\
+            'SCC Diffusion Tubes (NO<sub>2</sub>) (2017) <a class="infolink" href="#" onclick="showInfoDialog(INFO_DIFFUSION_TUBES)"><img class="infobutton" src="images/questionbutton.svg"></a><br />\
             <table id="legend_DiffusionTubeMeasurements" style="display: none">\
                 <tr>\
                     <td class="legend-subitem" style="text-align: center; vertical-align: bottom;">\
@@ -611,7 +611,7 @@
             [legend_for_choropleth_layer(layer_PCM_2017, 'Defra PCM (NOx) (2017)', '&micro;g/m<sup>3</sup>', 'legend_PCM_2017', 'INFO_PCM_2017')]: layer_PCM_2017
 
             },
-            'Community perceptions <a class="infolink" href="#" onclick="showInfoDialog(INFO_COMMUNITY_PERCEPTIONS)">info</a>': {
+            'Community perceptions <a class="infolink" href="#" onclick="showInfoDialog(INFO_COMMUNITY_PERCEPTIONS)"><img class="infobutton" src="images/questionbutton.svg"></a>': {
             [speech_bubble_with_color(PERCEPTIONS_AQ_COLOR) + '&nbsp; Air Quality concerns']: layer_Perceptions_AQ,
             [speech_bubble_with_color(PERCEPTIONS_HEALTH_COLOR) + '&nbsp; Health concerns']: layer_Perceptions_Health,
             [speech_bubble_with_color(PERCEPTIONS_ASSETS_COLOR) + '&nbsp; Community assets']: layer_Perceptions_Assets,

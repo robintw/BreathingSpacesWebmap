@@ -38,3 +38,7 @@ body,
 .infolink {
     font-weight: normal;
 }
+
+.infobutton {
+    height: 1.1em;
+}
