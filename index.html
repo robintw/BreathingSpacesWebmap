@@ -519,7 +519,7 @@
             return HTML;
         }
 
-        INFO_BREATHING_SPACES = "<h2>Breathing Spaces sensors</h2>\
+        const INFO_BREATHING_SPACES = "<h2>Breathing Spaces sensors</h2>\
         <p>The Breathing Spaces sensors are a set of low-cost air quality sensors, deployed as part of the\
         <a href='https://breathingspaces.org.uk/'>Breathing Spaces</a> project in Southampton. The sensors\
         have been developed by a team at the University of Southampton, and measure particulate matter\
@@ -532,7 +532,7 @@
         <p>An academic paper describing and evaluating the PM sensors used is available <a\
         href='https://www.nature.com/articles/s41598-019-43716-3'>here</a>."
 
-        INFO_AURN = "<h2>AURN PM<sub>2.5</sub></h2>\
+        const INFO_AURN = "<h2>AURN PM<sub>2.5</sub></h2>\
         <p>The <a href='https://uk-air.defra.gov.uk/networks/network-info?view=aurn'>Automatic Urban-Rural Network (AURN)</a>\
         is a network of air pollution monitoring stations\
         run by the Department for Environment, Food and Rural Affairs (Defra). Each automated site\
@@ -544,7 +544,7 @@
         to reference standards, and produces highly accurate and reliable measurements.\
         <p>Detailed graphs are available <a href='http://southampton.my-air.uk/graphs/'>here</a>."
 
-        INFO_DIFFUSION_TUBES = "<h2>SCC Diffusion Tubes (NO<sub>2</sub>) (2017)</h2>\
+        const INFO_DIFFUSION_TUBES = "<h2>SCC Diffusion Tubes (NO<sub>2</sub>) (2017)</h2>\
         <p>Southampton City Council (SCC) operate a set of diffusion tubes to measure NO<sub>2</sub> \
         (Nitrogen Dioxide) pollution across Southampton. These are passive air quality measurement devices\
         which are left in-situ for around a month to absorb NO<sub>2</sub> from the air, and then analysed in\
@@ -557,7 +557,7 @@
         <p>Raw data and summary reports are available on the <a\
                 href='https://www.southampton.gov.uk/environmental-issues/pollution/air-quality/monitoring/nitrogen-dioxide-diffusion-tubes.aspx'>Southampton City Council website</a>.</p>"
 
-        INFO_PCM_GENERIC = "<p>The Department for Environment, Food and Rural Affairs (Defra) uses models to predict\
+        const INFO_PCM_GENERIC = "<p>The Department for Environment, Food and Rural Affairs (Defra) uses models to predict\
         background air pollution levels for each 1km x 1km square of land across the UK. The predicted levels of\
         Nitrous Oxides (NOx) are shown here in &micro;g/m<sup>3</sup>, by clicking on a grid square you can also see\
         the predicted levels of other pollutants.</p>\
@@ -566,13 +566,13 @@
         industrial sources, road traffic and other miscellaneous sources.</p>\
         Further details are available on the <a href='https://uk-air.defra.gov.uk/data/pcm-data'>Defra website</a>."
         
-        INFO_PCM_2016 = "<h2>Defra PCM (NOx) (2016)</h2>" + INFO_PCM_GENERIC
+        const INFO_PCM_2016 = "<h2>Defra PCM (NOx) (2016)</h2>" + INFO_PCM_GENERIC
 
-        INFO_PCM_2017 = "<h2>Defra PCM (NOx) (2017)</h2>" + INFO_PCM_GENERIC + "<p>\
+        const INFO_PCM_2017 = "<h2>Defra PCM (NOx) (2017)</h2>" + INFO_PCM_GENERIC + "<p>\
         <b>Note:</b> The predicted NOx levels for 2017 are significantly lower than those predicted for 2016.\
         This has not yet been fully explained by Defra, so data from both years are provided for comparison.</p>"
 
-        INFO_COMMUNITY_PERCEPTIONS = "<h2>Community perceptions</h2>\
+        const INFO_COMMUNITY_PERCEPTIONS = "<h2>Community perceptions</h2>\
         <p>At various Breathing Spaces community meetings, participants were invited to make notes on a map of\
         the area, expressing their concerns about air quality and health, as well as their ideas for change, and\
         community assets. These have been transcribed and are available here; click on a marker to read the comment.</p>"
@@ -649,6 +649,20 @@
             }).addTo(map);
 
         setBounds();
+
+        const WELCOME_DIALOG_TEXT = '<h2>Breathing Spaces air quality map</h2>\
+        <p>This map shows a range of air pollution data for Southampton.<br/>Click on markers\
+        on the map (such as <img src="legend/sensor_icon_darkblue.png" height=20px /> or\
+        <img class="legendicon" src="images/circle.svg" /> ) to show details for each measurement\
+        site, and tick boxes in the legend to\
+        add other data to the map.\
+        <br/>Clicking the <img class="infobutton" src="images/questionbutton.svg">\
+        icon next to a layer in the legend will show more information about that layer.</p>\
+        <p>Please send any feedback to XXXX.</p>'
+
+        map.whenReady(function () {
+            map.openModal({content: WELCOME_DIALOG_TEXT})
+        });
     </script>
 </body>
 
