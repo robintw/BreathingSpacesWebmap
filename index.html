@@ -76,7 +76,7 @@
              Sensor data from <a href="https://breathingspaces.org.uk/">Breathing Spaces</a>, \
              <a href="https://uk-air.defra.gov.uk/networks/network-info?view=aurn">Defra AURN</a>, \
              <a href="https://uk-air.defra.gov.uk/data/pcm-data">Defra PCM</a>,\
-             <a href="https://www.southampton.gov.uk/environmental-issues/pollution/air-quality/monitoring/nitrogen-dioxide-diffusion-tubes.aspx">SCC</a> &nbsp; &nbsp; &nbsp;'
+             <a href="https://www.southampton.gov.uk/environmental-issues/pollution/air-quality/monitoring/nitrogen-dioxide-diffusion-tubes.aspx">SCC</a>'
         );
         var bounds_group = new L.featureGroup([]);
 
@@ -630,15 +630,22 @@
         });
         layersControl.addTo(map);
 
+        scaleOpts = {position: 'bottomright',
+                     fill: 'fill'
+                    }
 
-        L.control.graphicScale({position: 'bottomright', fill: 'fill'}).addTo(map);
+        if (L.Browser.mobile) {
+            scaleOpts['maxUnitsWidth'] = 100;
+        }
+
+        L.control.graphicScale(scaleOpts).addTo(map);
 
         var credctrl = L.controlCredits({
                 image: "./images/logo.jpeg",
                 link: "https://breathingspaces.org.uk/",
                 text: "Map created by the Breathing Spaces project, click here for more information",
-                width: 150,
-                height: 150
+                width: (L.Browser.mobile ? 75 : 150),
+                height: (L.Browser.mobile ? 75 : 150),
             }).addTo(map);
 
         setBounds();

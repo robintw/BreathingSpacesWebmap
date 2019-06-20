@@ -8,6 +8,7 @@
     background-image:none; /* defined in the JavaScript code */
     background-repeat:no-repeat;
     background-position:100% 0;
+    background-size: contain;
 
     background-color:white;
     opacity:0.90;
