@@ -650,15 +650,20 @@
 
         setBounds();
 
-        const WELCOME_DIALOG_TEXT = '<h2>Breathing Spaces air quality map</h2>\
-        <p>This map shows a range of air pollution data for Southampton.<br/>Click on markers\
-        on the map (such as <img src="legend/sensor_icon_darkblue.png" height=20px /> or\
-        <img class="legendicon" src="images/circle.svg" /> ) to show details for each measurement\
-        site, and tick boxes in the legend to\
-        add other data to the map.\
-        <br/>Clicking the <img class="infobutton" src="images/questionbutton.svg">\
-        icon next to a layer in the legend will show more information about that layer.</p>\
-        <p>Please send any feedback to XXXX.</p>'
+        const WELCOME_DIALOG_TEXT = '<p>Welcome to the Air Quality Map for the <a href="https://breathingspaces.org.uk/">\
+        Breathing Spaces</a> project.</p>\
+        <p>Our aim is to present a range of air pollution data for Southampton, not only from monitoring \
+        stations and mathematical models, but also from the community. How do you feel about air quality in \
+        the city?</p>\
+        <p>You can select which type of data you’d like to see by clicking the boxes in the legend. For more \
+        details on a particular site, click on the markers on the map (such as <img src="legend/sensor_icon_darkblue.png" height=20px /> or <img class="legendicon" src="images/circle.svg"/>).\
+        This will bring up graphs and links to further information.\
+        If you’d like to find out more about different pollutants, sensors or community ideas, please click on the <img class="infobutton" src="images/questionbutton.svg"> icon.</p>\
+        <p>This map is part of a community clean air project and we’re keen to hear how we can make it more useful \
+        and informative. Please do send any comments or questions to <a href="mailto:breathe@socollective.org.uk">breathe@socollective.org.uk</a>.\
+        We’d love to hear from you!'
+
+
 
         map.whenReady(function () {
             map.openModal({content: WELCOME_DIALOG_TEXT})
