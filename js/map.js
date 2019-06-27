@@ -32,20 +32,20 @@ layer_OSM.addTo(map);
 // Active (Breathing Spaces) sensors layer
 ///////////////////////////////////////////////////////////////////////////////////
 
-var iframeWidth;
+var popupWidth;
 
 if (window.innerWidth < 600) {
-    iframeWidth = window.innerWidth * 0.75;
+    popupWidth = window.innerWidth * 0.75;
 } else {
-    iframeWidth = 450;
+    popupWidth = 450;
 }
 
 function pop_ActiveSensors_1(feature, layer) {
-    var popupContent = '<iframe src="' + feature.properties['graph_url'] + '" width="' + iframeWidth + '" height="200" frameborder="0"></iframe>' +
+    var popupContent = '<iframe src="' + feature.properties['graph_url'] + '" width="' + popupWidth + '" height="200" frameborder="0"></iframe>' +
         '<br><a href="https://opennms.computenodes.net/grafana/d/G2NTzy6mk/st-denys-detailed-measurements?orgId=1&var-node=mqtt%3A' + feature.properties['sensor_id'] + '">More details</a>' +
         '<br><b>Disclaimer:</b> The data presented has not been recorded using legally validated reference equipment and should therefore be treated with caution.'
     layer.bindPopup(popupContent, {
-        maxWidth: iframeWidth
+        maxWidth: popupWidth
     });
 }
 
@@ -86,7 +86,7 @@ map.addLayer(layer_ActiveSensors_1);
 function pop_AURN_Soton_Feb19Stats_2(feature, layer) {
     var popupContent = '<h3>AURN Site ' + feature.properties['site_name'] + '</h3>' +
         '<a href="graphs/' + feature.properties['site_id'] + '.html">\
-                <img src="graphs/' + feature.properties['site_id'] + '.png" width=' + iframeWidth + '></a>' +
+                <img src="graphs/' + feature.properties['site_id'] + '.png" width=' + popupWidth + '></a>' +
         '(click graph to get interactive version)<br/><br/>\
                 <b>Feb 2019 PM<sub>10</sub> statistics:</b>' +
         '<table>\
@@ -109,7 +109,7 @@ function pop_AURN_Soton_Feb19Stats_2(feature, layer) {
             </table>';
     layer.bindPopup(popupContent, {
         // maxHeight: 400
-        maxWidth: iframeWidth
+        maxWidth: popupWidth
     });
 }
 
@@ -155,7 +155,7 @@ function pop_DiffusionTubeMeasurements_MergedAndFixed_2(feature, layer) {
     var popupContent = '<h3>Diffusion tube at ' + feature.properties["Name"] + '</h3>' +
         '<b>2017 average:</b> ' + parseFloat(feature.properties['local adjusted']).toFixed(0) + '&micro;g/m<sup>3</sup>'
     layer.bindPopup(popupContent, {
-        maxHeight: 400
+        maxWidth: popupWidth
     });
 }
 
@@ -244,7 +244,7 @@ function pop_Perceptions(feature, layer) {
     var popupContent = '<h3>' + feature.properties["name"] + '</h3>' +
                         feature.properties['data']['Comment'].split('\n').join('<br/>');
     layer.bindPopup(popupContent, {
-        maxHeight: 400
+        maxWidth: popupWidth
     });
 }
 
