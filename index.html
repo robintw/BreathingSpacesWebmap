@@ -7,6 +7,7 @@
     <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
+
     <link rel="stylesheet" href="css/leaflet.css">
     <link rel="stylesheet" href="css/qgis2web.css">
     <link rel="stylesheet" href="css/fontawesome-all.min.css">
@@ -59,6 +60,7 @@
     <script src="data/Perceptions.js"></script>
     <script src="data/PCM_2017.js"></script>
     <script src="data/PCM_2016.js"></script>
+
     <script>
         var map = L.map('map', {
             zoomControl: true,
@@ -264,11 +266,11 @@
 
         layer_DiffusionTubeMeasurements_MergedAndFixed_2.on('add', function () {
             gtag('event', 'select_content', { content_type : 'Diffusion Tubes' });
-            $('#legend_DiffusionTubeMeasurements').show()
+            $('#legend_DiffusionTubeMeasurements').show();
         });
 
         layer_DiffusionTubeMeasurements_MergedAndFixed_2.on('remove', function () {
-            $('#legend_DiffusionTubeMeasurements').hide()
+            $('#legend_DiffusionTubeMeasurements').hide();
         });
         ///////////////////////////////////////////////////////////////////////////////////
         // Perceptions layer
@@ -291,21 +293,28 @@
         });
 
         function pop_Perceptions(feature, layer) {
-            var popupContent = '<h3>' + feature.properties["name"] + '</h3>' + feature.properties['data']['Comment'].split('\n').join('<br/>');
+            var popupContent = '<h3>' + feature.properties["name"] + '</h3>' +
+                               feature.properties['data']['Comment'].split('\n').join('<br/>');
             layer.bindPopup(popupContent, {
                 maxHeight: 400
             });
         }
 
         function speech_bubble_with_color(color) {
-            return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 842.777 690.811" height="26.59" width="26.59" version="1"><path d="M384.252.911c-194.4 11.1-351.2 106-380 230-10.9 46.7-.6 98.9 28.1 142.4 14.2 21.6 36.9 46.2 59 64 70.9 56.9 175.4 93.4 288.5 100.5 21 1.4 63.2 1.4 81.7.1l14.3-1.1 153.6 77.2c84.4 42.4 153.6 76.9 153.8 76.8.1-.2-28.2-44.5-63-98.4-34.9-53.9-63.4-98.2-63.4-98.5 0-.3 7.9-4.3 17.4-8.9 61.9-29.7 112.3-72.1 139.9-117.6 29.1-48 36.1-99.5 20.6-150-31.8-103.2-155.3-185.5-314.8-210-42.9-6.5-92.6-8.9-135.7-6.5z" fill="' +
-                        color + '" stroke="black" stroke-width="10"/></svg>'
+            return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 842.777 690.811" height="26.59"\
+                    width="26.59" version="1"><path d="M384.252.911c-194.4 11.1-351.2 106-380 230-10.9\
+                    46.7-.6 98.9 28.1 142.4 14.2 21.6 36.9 46.2 59 64 70.9 56.9 175.4 93.4 288.5 100.5\
+                    21 1.4 63.2 1.4 81.7.1l14.3-1.1 153.6 77.2c84.4 42.4 153.6 76.9 153.8 \
+                    76.8.1-.2-28.2-44.5-63-98.4-34.9-53.9-63.4-98.2-63.4-98.5 0-.3 7.9-4.3 \
+                    17.4-8.9 61.9-29.7 112.3-72.1 139.9-117.6 29.1-48 36.1-99.5 \
+                    20.6-150-31.8-103.2-155.3-185.5-314.8-210-42.9-6.5-92.6-8.9-135.7-6.5z" fill="' +
+                        color + '" stroke="black" stroke-width="10"/></svg>';
         }
 
-        PERCEPTIONS_AQ_COLOR = '#1f78b4'
-        PERCEPTIONS_HEALTH_COLOR = '#735290'
-        PERCEPTIONS_ASSETS_COLOR = '#b2df8a'
-        PERCEPTIONS_CHANGE_COLOR = '#CDDDDD'
+        const PERCEPTIONS_AQ_COLOR = '#1f78b4';
+        const PERCEPTIONS_HEALTH_COLOR = '#735290';
+        const PERCEPTIONS_ASSETS_COLOR = '#b2df8a';
+        const PERCEPTIONS_CHANGE_COLOR = '#CDDDDD';
 
         function style_Perceptions(feature, color) {
             return {
@@ -458,12 +467,12 @@
             setTimeout(function() {
                 map.removeLayer(layer_PCM_2016);
                 gtag('event', 'select_content', { content_type : 'PCM 2017' });
-                $('#legend_PCM_2017').show()
+                $('#legend_PCM_2017').show();
             });
         });
 
         layer_PCM_2017.on('remove', function () {
-            $('#legend_PCM_2017').hide()
+            $('#legend_PCM_2017').hide();
         });
 
         var layer_PCM_2016 = L.choropleth(json_PCM_2016, {
@@ -485,20 +494,22 @@
             setTimeout(function() {
                 map.removeLayer(layer_PCM_2017);
                 gtag('event', 'select_content', { content_type : 'PCM 2016' });
-                $('#legend_PCM_2016').show()
+                $('#legend_PCM_2016').show();
             });
         });
 
         layer_PCM_2016.on('remove', function () {
-            $('#legend_PCM_2016').hide()
+            $('#legend_PCM_2016').hide();
         });
 
         function legend_for_choropleth_layer(layer, name, units, id, info_content) {
-            var limits = layer.options.limits
-            var colors = layer.options.colors
-            var labels = []
+            var limits = layer.options.limits;
+            var colors = layer.options.colors;
+            var labels = [];
 
-            HTML = name + ' <a class="infolink" href="#" onclick="showInfoDialog(' + info_content + ')"><img class="infobutton" src="images/questionbutton.svg"></a>'
+            var HTML = name + ' <a class="infolink" href="#" onclick="showInfoDialog(' +
+                               info_content +
+                               ')"><img class="infobutton" src="images/questionbutton.svg"></a>'
 
             limits.forEach(function (limit, index) {
                 if (index === 0) {
@@ -511,10 +522,11 @@
                     var range_str = from + "-" + to;
                 }
                 
-                labels.push('<li class="sublegend-item"><div class="sublegend-color" style="background-color: ' + colors[index] + '">&nbsp;</div>&nbsp;' + range_str + units + '</li>')
+                labels.push('<li class="sublegend-item"><div class="sublegend-color" style="background-color: ' +
+                            colors[index] + '">&nbsp;</div>&nbsp;' + range_str + units + '</li>');
             })
 
-            HTML += '<ul id="' + id + '" class="sublegend" style="display: none">' + labels.join('') + '</ul>'
+            HTML += '<ul id="' + id + '" class="sublegend" style="display: none">' + labels.join('') + '</ul>';
 
             return HTML;
         }
@@ -530,7 +542,7 @@
         comparison, the width of a human hair is around 75&micro;m). The measurements are provided in\
         &micro;g/m<sup>3</sup>, the weight of particles per cubic metre of air.</p>\</p>\
         <p>An academic paper describing and evaluating the PM sensors used is available <a\
-        href='https://www.nature.com/articles/s41598-019-43716-3'>here</a>."
+        href='https://www.nature.com/articles/s41598-019-43716-3'>here</a>.";
 
         const INFO_AURN = "<h2>AURN PM<sub>2.5</sub></h2>\
         <p>The <a href='https://uk-air.defra.gov.uk/networks/network-info?view=aurn'>Automatic Urban-Rural Network (AURN)</a>\
@@ -542,7 +554,7 @@
         metre of air.</p>\
         <p>The AURN network is used for government air quality assessments, and is therefore calibrated\
         to reference standards, and produces highly accurate and reliable measurements.\
-        <p>Detailed graphs are available <a href='http://southampton.my-air.uk/graphs/'>here</a>."
+        <p>Detailed graphs are available <a href='http://southampton.my-air.uk/graphs/'>here</a>.";
 
         const INFO_DIFFUSION_TUBES = "<h2>SCC Diffusion Tubes (NO<sub>2</sub>) (2017)</h2>\
         <p>Southampton City Council (SCC) operate a set of diffusion tubes to measure NO<sub>2</sub> \
@@ -555,7 +567,7 @@
         <p>The measurements displayed are from 2017 as more recent data has not yet been released by Southampton\
         City Council.</p>\
         <p>Raw data and summary reports are available on the <a\
-                href='https://www.southampton.gov.uk/environmental-issues/pollution/air-quality/monitoring/nitrogen-dioxide-diffusion-tubes.aspx'>Southampton City Council website</a>.</p>"
+                href='https://www.southampton.gov.uk/environmental-issues/pollution/air-quality/monitoring/nitrogen-dioxide-diffusion-tubes.aspx'>Southampton City Council website</a>.</p>";
 
         const INFO_PCM_GENERIC = "<p>The Department for Environment, Food and Rural Affairs (Defra) uses models to predict\
         background air pollution levels for each 1km x 1km square of land across the UK. The predicted levels of\
@@ -564,21 +576,21 @@
         <p>The models take into account a range of potential sources of air pollution including large and small sources\
         from the UK National Atmospheric Emissions Inventory, distant sources (such as pollution from the continent),\
         industrial sources, road traffic and other miscellaneous sources.</p>\
-        Further details are available on the <a href='https://uk-air.defra.gov.uk/data/pcm-data'>Defra website</a>."
+        Further details are available on the <a href='https://uk-air.defra.gov.uk/data/pcm-data'>Defra website</a>.";
         
-        const INFO_PCM_2016 = "<h2>Defra PCM (NOx) (2016)</h2>" + INFO_PCM_GENERIC
+        const INFO_PCM_2016 = "<h2>Defra PCM (NOx) (2016)</h2>" + INFO_PCM_GENERIC;
 
         const INFO_PCM_2017 = "<h2>Defra PCM (NOx) (2017)</h2>" + INFO_PCM_GENERIC + "<p>\
         <b>Note:</b> The predicted NOx levels for 2017 are significantly lower than those predicted for 2016.\
-        This has not yet been fully explained by Defra, so data from both years are provided for comparison.</p>"
+        This has not yet been fully explained by Defra, so data from both years are provided for comparison.</p>";
 
         const INFO_COMMUNITY_PERCEPTIONS = "<h2>Community perceptions</h2>\
         <p>At various Breathing Spaces community meetings, participants were invited to make notes on a map of\
         the area, expressing their concerns about air quality and health, as well as their ideas for change, and\
-        community assets. These have been transcribed and are available here; click on a marker to read the comment.</p>"
+        community assets. These have been transcribed and are available here; click on a marker to read the comment.</p>";
 
         function showInfoDialog(content) {
-            map.openModal({content: content})
+            map.openModal({content: content});
         }
 
         ///////////////////////////////////////////////////////////////////////////////////
@@ -620,9 +632,9 @@
         };
 
         if (L.Browser.mobile) {
-            layersControlCollapsed = true;
+            var layersControlCollapsed = true;
         } else {
-            layersControlCollapsed = false;
+            var layersControlCollapsed = false;
         }
 
         var layersControl = L.control.groupedLayers(baseMaps, groupedOverlays, {
@@ -630,9 +642,9 @@
         });
         layersControl.addTo(map);
 
-        scaleOpts = {position: 'bottomright',
-                     fill: 'fill'
-                    }
+        var scaleOpts = {position: 'bottomright',
+                         fill: 'fill'
+                        };
 
         if (L.Browser.mobile) {
             scaleOpts['maxUnitsWidth'] = 100;
