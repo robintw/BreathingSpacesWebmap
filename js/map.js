@@ -86,7 +86,7 @@ map.addLayer(layer_ActiveSensors_1);
 function pop_AURN_Soton_Feb19Stats_2(feature, layer) {
     var popupContent = '<h3>AURN Site ' + feature.properties['site_name'] + '</h3>' +
         '<a href="graphs/' + feature.properties['site_id'] + '.html">\
-                <img src="graphs/' + feature.properties['site_id'] + '.png" width=300px></a>' +
+                <img src="graphs/' + feature.properties['site_id'] + '.png" width=' + iframeWidth + '></a>' +
         '(click graph to get interactive version)<br/><br/>\
                 <b>Feb 2019 PM<sub>10</sub> statistics:</b>' +
         '<table>\
@@ -108,7 +108,8 @@ function pop_AURN_Soton_Feb19Stats_2(feature, layer) {
             </tr>\
             </table>';
     layer.bindPopup(popupContent, {
-        maxHeight: 400
+        // maxHeight: 400
+        maxWidth: iframeWidth
     });
 }
 
