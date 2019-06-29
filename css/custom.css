@@ -48,14 +48,14 @@ body,
 }
 
 .leaflet-control-layers-toggle::after {
-    content: 'Layers';
+    content: 'Air quality data';
     padding-left: 2.5em;
     color: grey;
 }
 
 .leaflet-control-layers-toggle {
     background-position: 0px 0px;
-    width: 6em !important;
+    width: 10em !important;
     height: 28px !important;
     line-height: 28px;
     text-decoration: none;
