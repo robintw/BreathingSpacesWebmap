@@ -508,6 +508,12 @@ var credctrl = L.controlCredits({
 
 setBounds();
 
-map.whenReady(function () {
-    // map.openModal({content: WELCOME_DIALOG_TEXT})
+// map.whenReady(function () {
+//     // map.openModal({content: WELCOME_DIALOG_TEXT})
+// });
+
+$(document).ready(function () {
+    map.openModal({
+        content: WELCOME_DIALOG_TEXT
+    })
 });
