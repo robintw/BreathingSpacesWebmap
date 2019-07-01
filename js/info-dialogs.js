@@ -51,7 +51,7 @@
         <b>Note:</b> The predicted NOx levels for 2017 are significantly lower than those predicted for 2016.\
         This has not yet been fully explained by Defra, so data from both years are provided for comparison.</p>";
 
-        const INFO_COMMUNITY_PERCEPTIONS = "<h2>Community perceptions</h2>\
+        const INFO_COMMUNITY_PERCEPTIONS = "<h2>Your concerns & ideas</h2>\
         <p>At various Breathing Spaces community meetings, participants were invited to make notes on a map of\
         the area, expressing their concerns about air quality and health, as well as their ideas for change, and\
         community assets. These have been transcribed and are available here; click on a marker to read the comment.</p>";

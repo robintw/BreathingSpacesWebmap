@@ -42,7 +42,7 @@ if (window.innerWidth < 600) {
 
 function pop_ActiveSensors_1(feature, layer) {
     var popupContent = '<iframe src="' + feature.properties['graph_url'] + '" width="' + popupWidth + '" height="200" frameborder="0"></iframe>' +
-        '<br><a href="https://opennms.computenodes.net/grafana/d/G2NTzy6mk/st-denys-detailed-measurements?orgId=1&var-node=mqtt%3A' + feature.properties['sensor_id'] + '">More details</a>' +
+        '<br><a href="https://opennms.computenodes.net/grafana/d/G2NTzy6mk/st-denys-detailed-measurements?orgId=1&var-node=mqtt%3A' + feature.properties['sensor_id'] + '">Detailed sensor data</a>' +
         '<br><b>Disclaimer:</b> The data presented has not been recorded using legally validated reference equipment and should therefore be treated with caution.'
     layer.bindPopup(popupContent, {
         maxWidth: popupWidth
@@ -469,7 +469,7 @@ var groupedOverlays = {
     [legend_for_choropleth_layer(layer_PCM_2017, 'Defra PCM (NOx) (2017)', '&micro;g/m<sup>3</sup>', 'legend_PCM_2017', 'INFO_PCM_2017')]: layer_PCM_2017
 
     },
-    'Community perceptions <a class="infolink" href="#" onclick="showInfoDialog(INFO_COMMUNITY_PERCEPTIONS)"><img class="infobutton" src="images/questionbutton.svg"></a>': {
+    'Your concerns & ideas <a class="infolink" href="#" onclick="showInfoDialog(INFO_COMMUNITY_PERCEPTIONS)"><img class="infobutton" src="images/questionbutton.svg"></a>': {
     [speech_bubble_with_color(PERCEPTIONS_AQ_COLOR) + '&nbsp; Air Quality concerns']: layer_Perceptions_AQ,
     [speech_bubble_with_color(PERCEPTIONS_HEALTH_COLOR) + '&nbsp; Health concerns']: layer_Perceptions_Health,
     [speech_bubble_with_color(PERCEPTIONS_ASSETS_COLOR) + '&nbsp; Community assets']: layer_Perceptions_Assets,
