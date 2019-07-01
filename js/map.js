@@ -509,5 +509,5 @@ var credctrl = L.controlCredits({
 setBounds();
 
 map.whenReady(function () {
-    map.openModal({content: WELCOME_DIALOG_TEXT})
+    // map.openModal({content: WELCOME_DIALOG_TEXT})
 });
