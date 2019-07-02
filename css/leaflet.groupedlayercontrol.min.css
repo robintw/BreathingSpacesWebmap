@@ -1,1 +1,36 @@
-.leaflet-control-layers-group-name{font-weight:700;margin-bottom:.2em;margin-left:3px}.leaflet-control-layers-group{margin-bottom:.5em}.leaflet-control-layers-scrollbar{overflow-y:scroll;padding-right:10px}
+.leaflet-control-layers-group-name {
+    font-weight: 700;
+    margin-bottom: .2em;
+    margin-left: 3px
+}
+
+.leaflet-control-layers-group {
+    margin-bottom: .5em
+}
+
+.leaflet-control-layers-scrollbar {
+    overflow-y: scroll;
+    padding-right: 10px
+}
+
+.leaflet-control-layers-collapse-link {
+    -webkit-appearance: none;
+    padding: 12px;
+    margin: -12px;
+    cursor: pointer;
+    background: 0 0;
+    border: 0;
+    float: right;
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 1;
+    color: #000 !important;
+    text-shadow: 0 1px 0 #fff;
+    opacity: .2;
+    filter: alpha(opacity=20);
+}
+
+.leaflet-control-layers-collapse-link:hover {
+    opacity: .8;
+    filter: alpha(opacity=80)
+}
