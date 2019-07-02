@@ -48,7 +48,7 @@ body,
 }
 
 .leaflet-control-layers-toggle::after {
-    content: 'Air quality data';
+    content: 'Menu';
     padding-left: 2.5em;
     color: grey;
 }
