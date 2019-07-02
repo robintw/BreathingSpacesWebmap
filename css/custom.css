@@ -55,7 +55,7 @@ body,
 
 .leaflet-control-layers-toggle {
     background-position: 0px 0px;
-    width: 10em !important;
+    width: 6em !important;
     height: 28px !important;
     line-height: 28px;
     text-decoration: none;
