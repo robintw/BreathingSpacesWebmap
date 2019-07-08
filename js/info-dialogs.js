@@ -60,15 +60,10 @@
             map.openModal({content: content});
         }
 
-        const WELCOME_DIALOG_TEXT = '<p>Welcome to the Air Quality Map for the <a href="https://breathingspaces.org.uk/">\
-        Breathing Spaces</a> project.</p>\
-        <p>Our aim is to present a range of air pollution data for Southampton, not only from monitoring \
-        stations and mathematical models, but also from the community. How do you feel about air quality in \
-        the city?</p>\
-        <p>You can select which type of data you’d like to see by clicking the boxes in the legend. For more \
-        details on a particular site, click on the markers on the map (such as <img src="legend/sensor_icon_darkblue.png" height=20px /> or <img class="legendicon" src="images/circle.svg"/>).\
-        This will bring up graphs and links to further information.\
-        If you’d like to find out more about different pollutants, sensors or community ideas, please click on the <img class="infobutton" src="images/questionbutton.svg"> icon.</p>\
-        <p>This map is part of a community clean air project and we’re keen to hear how we can make it more useful \
-        and informative. Please do send any comments or questions to <a href="mailto:breathe@socollective.org.uk">breathe@socollective.org.uk</a>.\
-        We’d love to hear from you!'
+        const WELCOME_DIALOG_TEXT = '<p>Welcome to the map for the <a href="https://breathingspaces.org.uk/">\
+        Breathing Spaces</a> project, a community clean air initiative in Southampton.</p>\
+        <p>For more details on a particular sensor, click on the markers on the map(such as <img src="legend/sensor_icon_darkblue.png"\
+        height=20 px/> or <img class="legendicon" src="images/circle.svg"/> ).You can also use the Menu to select different types of data\
+        and find out more information by clicking the <img class="infobutton" src="images/questionbutton.svg"> icon. </p>\
+        <p> Please do send any comments or questions to <a href="mailto:breathe@socollective.org.uk">breathe@socollective.org.uk</a>.\
+        We’d love to hear from you!</p>'
