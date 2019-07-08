@@ -3,8 +3,8 @@ var map = L.map('map', {
     maxZoom: 28,
     minZoom: 1
 }).fitBounds([
-    [50.91680906587142, -1.4009899783471849],
-    [50.928980620670686, -1.3647479492724635]
+    [50.899615041735814, -1.5200098603963854],
+    [50.93954716446083, -1.3002832978963854]
 ]);
 var hash = new L.Hash(map);
 map.attributionControl.setPrefix(
@@ -211,6 +211,7 @@ var layer_DiffusionTubeMeasurements_MergedAndFixed_2 = new L.geoJson(
         },
     });
 bounds_group.addLayer(layer_DiffusionTubeMeasurements_MergedAndFixed_2);
+layer_DiffusionTubeMeasurements_MergedAndFixed_2.addTo(map);
 
 layer_DiffusionTubeMeasurements_MergedAndFixed_2.on('add', function () {
     gtag('event', 'select_content', { content_type : 'Diffusion Tubes' });
