@@ -62,8 +62,8 @@
 
         const WELCOME_DIALOG_TEXT = '<p>Welcome to the map for the <a href="https://breathingspaces.org.uk/">\
         Breathing Spaces</a> project, a community clean air initiative in Southampton.</p>\
-        <p>For more details on a particular sensor, click on the markers on the map(such as <img src="legend/sensor_icon_darkblue.png"\
-        height=20 px/> or <img class="legendicon" src="images/circle.svg"/> ).You can also use the Menu to select different types of data\
+        <p>For more details on a particular sensor, click on the markers on the map (such as <img src="legend/sensor_icon_darkblue.png"\
+        height=20 px/> or <img class="legendicon" src="images/circle.svg"/>). You can also use the Menu to select different types of data\
         and find out more information by clicking the <img class="infobutton" src="images/questionbutton.svg"> icon. </p>\
         <p> Please do send any comments or questions to <a href="mailto:breathe@socollective.org.uk">breathe@socollective.org.uk</a>.\
         We’d love to hear from you!</p>'
