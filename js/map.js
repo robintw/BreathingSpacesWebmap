@@ -6,7 +6,7 @@ var map = L.map('map', {
     [50.899615041735814, -1.5200098603963854],
     [50.93954716446083, -1.3002832978963854]
 ]);
-var hash = new L.Hash(map);
+// var hash = new L.Hash(map);
 map.attributionControl.setPrefix(
     '<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot;\
         <a href="http://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; \
