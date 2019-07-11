@@ -12,7 +12,7 @@ var json_ActiveSensors_1 = {
             "properties": {
                 "fid": 1,
                 "Name": "Priory Rd (North)",
-                "sensor_id": "nesta-2",
+                "sensor_id": "nesta-2-1",
                 "graph_url": "https:\/\/opennms.computenodes.net\/grafana\/d-solo\/xSYPGSRZk\/st-denys-overview?orgId=1&panelId=3"
             },
             "geometry": {
