@@ -211,7 +211,6 @@ var layer_DiffusionTubeMeasurements_MergedAndFixed_2 = new L.geoJson(
         },
     });
 bounds_group.addLayer(layer_DiffusionTubeMeasurements_MergedAndFixed_2);
-layer_DiffusionTubeMeasurements_MergedAndFixed_2.addTo(map);
 
 layer_DiffusionTubeMeasurements_MergedAndFixed_2.on('add', function () {
     gtag('event', 'select_content', { content_type : 'Diffusion Tubes' });
@@ -221,6 +220,9 @@ layer_DiffusionTubeMeasurements_MergedAndFixed_2.on('add', function () {
 layer_DiffusionTubeMeasurements_MergedAndFixed_2.on('remove', function () {
     $('#legend_DiffusionTubeMeasurements').hide();
 });
+
+layer_DiffusionTubeMeasurements_MergedAndFixed_2.addTo(map);
+
 ///////////////////////////////////////////////////////////////////////////////////
 // Perceptions layer
 ///////////////////////////////////////////////////////////////////////////////////
@@ -514,6 +516,10 @@ setBounds();
 // });
 
 $(document).ready(function () {
+    // Have to run the Diffusion Tube layer's add event manually here
+    // as otherwise it fires before the page is properly loaded and therefore
+    // doesn't load the legend properly
+    layer_DiffusionTubeMeasurements_MergedAndFixed_2.fireEvent('add');
     map.openModal({
         content: WELCOME_DIALOG_TEXT
     })
