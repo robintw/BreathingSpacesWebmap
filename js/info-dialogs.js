@@ -9,7 +9,23 @@
         comparison, the width of a human hair is around 75&micro;m). The measurements are provided in\
         &micro;g/m<sup>3</sup>, the weight of particles per cubic metre of air.</p>\</p>\
         <p>An academic paper describing and evaluating the PM sensors used is available <a\
-        href='https://www.nature.com/articles/s41598-019-43716-3'>here</a>.";
+        href='https://www.nature.com/articles/s41598-019-43716-3'>here</a>.</p>";
+
+        const INFO_SCHOOL = "<h2>School sensors</h2>\
+        <p>The school sensors are a set of low-cost air quality sensors (of the same time as the Breathing\
+        Spaces sensors) which are installed at two schools in Southampton. Each school site has three sensors\
+        located on it. The sensors\
+        have been developed by a team at the University of Southampton, and measure particulate matter\
+        pollution, which consists of tiny particles that can get deep inside your lungs and cause health\
+        effects such as cardiovascular disease. </p>\
+        <p>Particulate matter is split into two components: PM<sub>10</sub> and PM<sub>2.5</sub>, which consist\
+        of particles smaller than 2.5&micro;m and 10&micro;m respectively (for\
+        comparison, the width of a human hair is around 75&micro;m). The measurements are provided in\
+        &micro;g/m<sup>3</sup>, the weight of particles per cubic metre of air.</p>\</p>\
+        <p>An academic paper describing and evaluating the PM sensors used is available <a\
+        href='https://www.nature.com/articles/s41598-019-43716-3'>here</a>.</p>\
+        <p><b>Note: </b> Some of the sensors have failed since they were installed, and so some sensor graphs\
+        are not showing any data at present</p>";
 
         const INFO_AURN = "<h2>AURN PM<sub>2.5</sub></h2>\
         <p>The <a href='https://uk-air.defra.gov.uk/networks/network-info?view=aurn'>Automatic Urban-Rural Network (AURN)</a>\

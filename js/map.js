@@ -20,6 +20,14 @@ var bounds_group = new L.featureGroup([]);
 
 function setBounds() {}
 
+var popupWidth;
+
+if (window.innerWidth < 600) {
+    popupWidth = window.innerWidth * 0.75;
+} else {
+    popupWidth = 450;
+}
+
 ///////////////////////////////////////////////////////////////////////////////////
 // Background map
 ///////////////////////////////////////////////////////////////////////////////////
@@ -31,14 +39,6 @@ layer_OSM.addTo(map);
 ///////////////////////////////////////////////////////////////////////////////////
 // Active (Breathing Spaces) sensors layer
 ///////////////////////////////////////////////////////////////////////////////////
-
-var popupWidth;
-
-if (window.innerWidth < 600) {
-    popupWidth = window.innerWidth * 0.75;
-} else {
-    popupWidth = 450;
-}
 
 function pop_ActiveSensors_1(feature, layer) {
     var popupContent = '<iframe src="' + feature.properties['graph_url'] + '" width="' + popupWidth + '" height="200" frameborder="0"></iframe>' +
@@ -61,7 +61,7 @@ function style_ActiveSensors_1_0() {
     }
 }
 map.createPane('pane_ActiveSensors_1');
-map.getPane('pane_ActiveSensors_1').style.zIndex = 401;
+map.getPane('pane_ActiveSensors_1').style.zIndex = 10000;
 map.getPane('pane_ActiveSensors_1').style['mix-blend-mode'] = 'normal';
 var layer_ActiveSensors_1 = new L.geoJson(json_ActiveSensors_1, {
     attribution: '',
@@ -78,7 +78,47 @@ var layer_ActiveSensors_1 = new L.geoJson(json_ActiveSensors_1, {
 bounds_group.addLayer(layer_ActiveSensors_1);
 map.addLayer(layer_ActiveSensors_1);
 
+///////////////////////////////////////////////////////////////////////////////////
+// School sensors layer
+///////////////////////////////////////////////////////////////////////////////////
 
+function pop_SchoolSensors(feature, layer) {
+    var popupContent = '<iframe src="https://opennms.computenodes.net/grafana/d-solo/FjxbKsHZk/schools-detailed-measurements?orgId=1&var-node=mqtt%3A' + feature.properties['LoRaWAN_ID'] + '&panelId=8" width="' + popupWidth + '" height="200" frameborder="0"></iframe>' +
+        '<br><a href="https://opennms.computenodes.net/grafana/d/FjxbKsHZk/schools-detailed-measurements?orgId=1&var-node=mqtt%3A' + feature.properties['LoRaWAN_ID'] + '">Detailed sensor data</a>' +
+        '<br><b>Disclaimer:</b> The data presented has not been recorded using legally validated reference equipment and should therefore be treated with caution.'
+    layer.bindPopup(popupContent, {
+        maxWidth: popupWidth
+    });
+}
+
+function style_SchoolSensors() {
+    return {
+        pane: 'pane_SchoolSensors',
+        rotationAngle: 0.0,
+        rotationOrigin: 'center center',
+        icon: L.icon({
+            iconUrl: 'markers/sensor_icon_green.svg',
+            iconSize: [26.599999999999998, 26.599999999999998]
+        }),
+    }
+}
+map.createPane('pane_SchoolSensors');
+map.getPane('pane_SchoolSensors').style.zIndex = 401;
+map.getPane('pane_SchoolSensors').style['mix-blend-mode'] = 'normal';
+var layer_SchoolSensors = new L.geoJson(json_SchoolSensors, {
+    attribution: '',
+    pane: 'pane_SchoolSensors',
+    onEachFeature: pop_SchoolSensors,
+    pointToLayer: function (feature, latlng) {
+        var context = {
+            feature: feature,
+            variables: {}
+        };
+        return L.marker(latlng, style_SchoolSensors(feature));
+    },
+});
+bounds_group.addLayer(layer_SchoolSensors);
+map.addLayer(layer_SchoolSensors);
 
 ///////////////////////////////////////////////////////////////////////////////////
 // AURN layer
@@ -448,8 +488,10 @@ layer_PCM_2016.on('remove', function () {
 var baseMaps = {};
 var groupedOverlays = {
     'Current data': {
-        '<img src="legend/sensor_icon_darkblue.png" height=20px /> Breathing Spaces sensors\
+        '<img src="markers/sensor_icon_darkblue.svg" height=20px /> Breathing Spaces sensors\
         <a class="infolink" href="#" onclick="showInfoDialog(INFO_BREATHING_SPACES)"><img class="infobutton" src="images/questionbutton.svg"></a>': layer_ActiveSensors_1,
+        '<img src="markers/sensor_icon_green.svg" height=20px /> School sensors\
+        <a class="infolink" href="#" onclick="showInfoDialog(INFO_SCHOOL)"><img class="infobutton" src="images/questionbutton.svg"></a>': layer_SchoolSensors,
         '<img class="legendicon" src="images/circle.svg"/> AURN PM<sub>2.5</sub>\
         <a class="infolink" href="#" onclick="showInfoDialog(INFO_AURN)"><img class="infobutton" src="images/questionbutton.svg"></a>': layer_AURN_Soton_Feb19Stats_2
     },
