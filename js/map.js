@@ -61,7 +61,7 @@ function style_ActiveSensors_1_0() {
     }
 }
 map.createPane('pane_ActiveSensors_1');
-map.getPane('pane_ActiveSensors_1').style.zIndex = 10000;
+map.getPane('pane_ActiveSensors_1').style.zIndex = 500;
 map.getPane('pane_ActiveSensors_1').style['mix-blend-mode'] = 'normal';
 var layer_ActiveSensors_1 = new L.geoJson(json_ActiveSensors_1, {
     attribution: '',
