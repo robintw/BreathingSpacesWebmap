@@ -84,6 +84,19 @@ var json_ActiveSensors_1 = {
                 "type": "Point",
                 "coordinates": [-1.3928875, 50.925843]
             }
-        }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "fid": 2,
+                "Name": "Priory Rd-Kent Rd junction",
+                "sensor_id": "nesta-8",
+                "graph_url": "https:\/\/opennms.computenodes.net\/grafana\/d-solo\/xSYPGSRZk\/st-denys-overview?orgId=1&panelId=10"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-1.383625, 50.927863]
+            }
+        },
     ]
 }
