@@ -42,7 +42,7 @@ layer_OSM.addTo(map);
 
 function pop_ActiveSensors_1(feature, layer) {
     var popupContent = '<iframe src="' + feature.properties['graph_url'] + '" width="' + popupWidth + '" height="200" frameborder="0"></iframe>' +
-        '<br><a href="https://opennms.computenodes.net/grafana/d/G2NTzy6mk/st-denys-detailed-measurements?orgId=1&var-node=mqtt%3A' + feature.properties['sensor_id'] + '">Detailed sensor data</a>' +
+        '<br><a href="https://opennms.computenodes.net/grafana/d/xSYPGSRZk/st-denys-overview?orgId=1" target="_blank">Detailed sensor data</a>' +
         '<br><b>Disclaimer:</b> The data presented has not been recorded using legally validated reference equipment and should therefore be treated with caution.'
     layer.bindPopup(popupContent, {
         maxWidth: popupWidth
@@ -125,26 +125,22 @@ map.addLayer(layer_SchoolSensors);
 ///////////////////////////////////////////////////////////////////////////////////
 function pop_AURN_Soton_Feb19Stats_2(feature, layer) {
     var popupContent = '<h3>AURN Site ' + feature.properties['site_name'] + '</h3>' +
-        '<a href="graphs/' + feature.properties['site_id'] + '.html">\
+        '<a href="graphs/' + feature.properties['site_id'] + '.html" target="_blank">\
                 <img src="graphs/' + feature.properties['site_id'] + '.png" width=' + popupWidth + '></a>' +
         '(click graph to get interactive version)<br/><br/>\
-                <b>Feb 2019 PM<sub>10</sub> statistics:</b>' +
+                <b>Sept 2019 PM<sub>10</sub> statistics:</b>' +
         '<table>\
             <tr>\
-                <td><b>Mean:</b> </td> <td colspan="2">' + (feature.properties['mean'] !== null ? Autolinker
-            .link(String(feature.properties['mean'])) : '') + '</td>\
+                <td><b>Mean:</b> </td> <td colspan="2">' + feature.properties['mean'].toFixed(1) + '&micro;g/m<sup>3</sup></td>\
             </tr>\
             <tr>\
-                <td><b>Max:</b> </td> <td colspan="2">' + (feature.properties['max'] !== null ? Autolinker
-            .link(String(feature.properties['max'])) : '') + '</td>\
+                <td><b>Max:</b> </td> <td colspan="2">' + feature.properties['max'].toFixed(1) + '&micro;g/m<sup>3</sup></td>\
             </tr>\
             <tr>\
-                <td><b>Min:</b> </td> <td colspan="2">' + (feature.properties['min'] !== null ? Autolinker
-            .link(String(feature.properties['min'])) : '') + '</td>\
+                <td><b>Min:</b> </td> <td colspan="2">' + feature.properties['min'].toFixed(1) + '&micro;g/m<sup>3</sup></td>\
             </tr>\
             <tr>\
-                <td><b>Median:</b> </td> <td colspan="2">' + (feature.properties['50%'] !== null ? Autolinker
-            .link(String(feature.properties['50%'])) : '') + '</td>\
+                <td><b>Median:</b> </td> <td colspan="2">' + feature.properties['50%'].toFixed(1) + '&micro;g/m<sup>3</sup></td>\
             </tr>\
             </table>';
     layer.bindPopup(popupContent, {
