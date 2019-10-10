@@ -128,7 +128,7 @@ function pop_AURN_Soton_Feb19Stats_2(feature, layer) {
         '<a href="graphs/' + feature.properties['site_id'] + '.html" target="_blank">\
                 <img src="graphs/' + feature.properties['site_id'] + '.png" width=' + popupWidth + '></a>' +
         '(click graph to get interactive version)<br/><br/>\
-                <b>Sept 2019 PM<sub>10</sub> statistics:</b>' +
+                <b>Sept 2019 NO<sub>2</sub> statistics:</b>' +
         '<table>\
             <tr>\
                 <td><b>Mean:</b> </td> <td colspan="2">' + feature.properties['mean'].toFixed(1) + '&micro;g/m<sup>3</sup></td>\
@@ -488,7 +488,7 @@ var groupedOverlays = {
         <a class="infolink" href="#" onclick="showInfoDialog(INFO_BREATHING_SPACES)"><img class="infobutton" src="images/questionbutton.svg"></a>': layer_ActiveSensors_1,
         '<img src="markers/sensor_icon_green.svg" height=20px /> School sensors\
         <a class="infolink" href="#" onclick="showInfoDialog(INFO_SCHOOL)"><img class="infobutton" src="images/questionbutton.svg"></a>': layer_SchoolSensors,
-        '<img class="legendicon" src="images/circle.svg"/> AURN PM<sub>2.5</sub>\
+        '<img class="legendicon" src="images/circle.svg"/> AURN NO<sub>2</sub>\
         <a class="infolink" href="#" onclick="showInfoDialog(INFO_AURN)"><img class="infobutton" src="images/questionbutton.svg"></a>': layer_AURN_Soton_Feb19Stats_2
     },
     'Historical data': {

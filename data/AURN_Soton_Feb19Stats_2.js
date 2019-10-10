@@ -15,10 +15,10 @@ var json_AURN_Soton_Feb19Stats_2 = {
                 "site_name": "Southampton A33",
                 "latitude": 50.920265,
                 "longitude": -1.463484,
-                "mean": 12.54,
-                "max": 38,
-                "min": 1.7,
-                "50%": 11.7
+                "mean": 33.72,
+                "max": 158.30,
+                "min": -2.29,
+                "50%": 29.26
             },
             "geometry": {
                 "type": "Point",
@@ -33,10 +33,10 @@ var json_AURN_Soton_Feb19Stats_2 = {
                 "site_name": "Southampton Centre",
                 "latitude": 50.90814,
                 "longitude": -1.395778,
-                "mean": 14.26,
-                "max": 43.8,
-                "min": -2.7,
-                "50%": 13.35
+                "mean": 27.94,
+                "max": 143.71,
+                "min": 1.65,
+                "50%": 24.27
             },
             "geometry": {
                 "type": "Point",
