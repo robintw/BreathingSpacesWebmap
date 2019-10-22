@@ -14,7 +14,8 @@ map.attributionControl.setPrefix(
         Sensor data from <a href="https://breathingspaces.org.uk/">Breathing Spaces</a>, \
         <a href="https://uk-air.defra.gov.uk/networks/network-info?view=aurn">Defra AURN</a>, \
         <a href="https://uk-air.defra.gov.uk/data/pcm-data">Defra PCM</a>,\
-        <a href="https://www.southampton.gov.uk/environmental-issues/pollution/air-quality/monitoring/nitrogen-dioxide-diffusion-tubes.aspx">SCC</a>'
+        <a href="https://www.southampton.gov.uk/environmental-issues/pollution/air-quality/monitoring/nitrogen-dioxide-diffusion-tubes.aspx">SCC</a>, \
+        <a href="http://www.erg.kcl.ac.uk">KCL ERG</a>'
 );
 var bounds_group = new L.featureGroup([]);
 
@@ -124,7 +125,8 @@ map.addLayer(layer_SchoolSensors);
 // AURN layer
 ///////////////////////////////////////////////////////////////////////////////////
 function pop_AURN_Soton_Feb19Stats_2(feature, layer) {
-    var popupContent = '<iframe src="graphs/AURN.html?site=' + feature.properties['site_id'] + '&width=' + (popupWidth - 20) + '" width="' + popupWidth + '" height="200" frameborder="0"></iframe>'
+    var popupContent = '<iframe src="graphs/AURN.html?site=' + feature.properties['site_id'] + '&width=' + (popupWidth - 20) + '" width="' + popupWidth + '" height="200" frameborder="0"></iframe>' + 
+    'Data provided from <a href="http://www.erg.kcl.ac.uk">KCL ERG</a> under the Open Government License'
     layer.bindPopup(popupContent, {
         // maxHeight: 400
         maxWidth: popupWidth
