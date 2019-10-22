@@ -1,0 +1,99 @@
+<html>
+
+<head>
+    <script src="plotly-latest.min.js"></script>
+</head>
+
+<body>
+    <div id="plot" style="width:600px;height:180px;"></div>
+    <script>
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            var results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        };
+
+        function pad(n) {
+            return n < 10 ? '0' + n : n;
+        }
+
+        function dateToString(date) {
+            var day = date.getDate();
+            var month = date.getMonth();
+            var year = date.getFullYear();
+
+            return year + '-' + pad(month + 1) + '-' + pad(day);
+        }
+
+        var site = getUrlParameter('site');
+        var width = getUrlParameter('width');
+
+        document.getElementById('plot').style.width = width + "px";
+
+        var current_date = new Date();
+
+        var start_date = new Date();
+        start_date.setDate(current_date.getDate() - 10);
+        var end_date = new Date();
+        end_date.setDate(current_date.getDate() + 1);
+
+        start_date = dateToString(start_date);
+        end_date = dateToString(end_date);
+
+
+        var url = "https://api.erg.kcl.ac.uk/AirQuality/Data/SiteSpecies/SiteCode=" + site +
+            "/SpeciesCode=NO2/StartDate=" + start_date + "/EndDate=" + end_date + "/csv";
+
+        console.log(url)
+
+        Plotly.d3.csv(url, function (err, rows) {
+
+            function unpack(rows, key) {
+                return rows.map(function (row) {
+                    return row[key];
+                });
+            }
+
+            var data_column = Object.keys(rows[0])[1];
+
+            var trace1 = {
+                type: "scatter",
+                mode: "lines",
+                x: unpack(rows, 'MeasurementDateGMT'),
+                y: unpack(rows, data_column),
+                // line: {color: '#17BECF'}
+            }
+
+            var data = [trace1];
+
+            var layout = {
+                title: '<b>' + data_column.split(':')[0] + '</b>',
+                margin: {
+                    t: 30,
+                    l: 35,
+                    r: 20,
+                    b: 35
+                },
+                titlefont: {
+                    size: 12
+                },
+                yaxis: {
+                    title: {
+                        text: 'NO2 (ug/m3)'
+                    },
+                    titlefont: {
+                        size: 10
+                    }
+                }
+            };
+
+            var config = {displayModeBar: false,
+                          responsive: true};
+
+            Plotly.newPlot('plot', data, layout, config);
+        })
+    </script>
+</body>
+
+</html>

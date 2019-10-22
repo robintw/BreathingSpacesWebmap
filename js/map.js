@@ -124,25 +124,7 @@ map.addLayer(layer_SchoolSensors);
 // AURN layer
 ///////////////////////////////////////////////////////////////////////////////////
 function pop_AURN_Soton_Feb19Stats_2(feature, layer) {
-    var popupContent = '<h3>AURN Site ' + feature.properties['site_name'] + '</h3>' +
-        '<a href="graphs/' + feature.properties['site_id'] + '.html" target="_blank">\
-                <img src="graphs/' + feature.properties['site_id'] + '.png" width=' + popupWidth + '></a>' +
-        '(click graph to get interactive version)<br/><br/>\
-                <b>Sept 2019 NO<sub>2</sub> statistics:</b>' +
-        '<table>\
-            <tr>\
-                <td><b>Mean:</b> </td> <td colspan="2">' + feature.properties['mean'].toFixed(1) + '&micro;g/m<sup>3</sup></td>\
-            </tr>\
-            <tr>\
-                <td><b>Max:</b> </td> <td colspan="2">' + feature.properties['max'].toFixed(1) + '&micro;g/m<sup>3</sup></td>\
-            </tr>\
-            <tr>\
-                <td><b>Min:</b> </td> <td colspan="2">' + feature.properties['min'].toFixed(1) + '&micro;g/m<sup>3</sup></td>\
-            </tr>\
-            <tr>\
-                <td><b>Median:</b> </td> <td colspan="2">' + feature.properties['50%'].toFixed(1) + '&micro;g/m<sup>3</sup></td>\
-            </tr>\
-            </table>';
+    var popupContent = '<iframe src="graphs/AURN.html?site=' + feature.properties['site_id'] + '&width=' + (popupWidth - 20) + '" width="' + popupWidth + '" height="200" frameborder="0"></iframe>'
     layer.bindPopup(popupContent, {
         // maxHeight: 400
         maxWidth: popupWidth
