@@ -126,6 +126,7 @@ map.addLayer(layer_SchoolSensors);
 ///////////////////////////////////////////////////////////////////////////////////
 function pop_AURN_Soton_Feb19Stats_2(feature, layer) {
     var popupContent = '<iframe src="graphs/AURN.html?site=' + feature.properties['site_id'] + '&width=' + (popupWidth - 20) + '" width="' + popupWidth + '" height="200" frameborder="0"></iframe>' + 
+    '<a href="http://southampton.my-air.uk/site/?SiteCode=' + feature.properties['site_id'] + '">Detailed sensor data</a><br>' + 
     'Data provided from <a href="http://www.erg.kcl.ac.uk">KCL ERG</a> under the Open Government License'
     layer.bindPopup(popupContent, {
         // maxHeight: 400
