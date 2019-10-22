@@ -49,50 +49,66 @@
 
         Plotly.d3.csv(url, function (err, rows) {
 
-            function unpack(rows, key) {
-                return rows.map(function (row) {
-                    return row[key];
-                });
-            }
-
-            var data_column = Object.keys(rows[0])[1];
-
-            var trace1 = {
-                type: "scatter",
-                mode: "lines",
-                x: unpack(rows, 'MeasurementDateGMT'),
-                y: unpack(rows, data_column),
-                // line: {color: '#17BECF'}
-            }
-
-            var data = [trace1];
-
-            var layout = {
-                title: '<b>' + data_column.split(':')[0] + '</b>',
-                margin: {
-                    t: 30,
-                    l: 35,
-                    r: 20,
-                    b: 35
-                },
-                titlefont: {
-                    size: 12
-                },
-                yaxis: {
-                    title: {
-                        text: 'NO2 (ug/m3)'
-                    },
-                    titlefont: {
-                        size: 10
+                    function unpack(rows, key) {
+                        return rows.map(function (row) {
+                            return row[key];
+                        });
                     }
-                }
-            };
 
-            var config = {displayModeBar: false,
-                          responsive: true};
+                    var data_column = Object.keys(rows[0])[1];
 
-            Plotly.newPlot('plot', data, layout, config);
-        })
+                    var trace1 = {
+                        type: "scatter",
+                        mode: "lines",
+                        x: unpack(rows, 'MeasurementDateGMT'),
+                        y: unpack(rows, data_column),
+                        // line: {color: '#17BECF'}
+                    }
+
+                    var data = [trace1];
+
+                    var layout = {
+                        title: '<b>' + data_column.split(':')[0] + '</b>',
+                        margin: {
+                            t: 30,
+                            l: 35,
+                            r: 20,
+                            b: 35
+                        },
+                        titlefont: {
+                            size: 12
+                        },
+                        yaxis: {
+                            title: {
+                                text: 'NO2 (ug/m3)'
+                            },
+                            titlefont: {
+                                size: 10
+                            }
+                        },
+                        shapes: [{
+                                type: 'line',
+                                xref: 'x',
+                                yref: 'y',
+                                x0: rows[0]['MeasurementDateGMT'],
+                                y0: 40,
+                                x1: rows[rows.length - 1]['MeasurementDateGMT'],
+                                y1: 40,
+                                opacity: 1.0,
+                                fillcolor: 'red',
+                                line: {
+                                    color: 'red'
+                                }
+                            }],
+                        };
+
+                        var config = {
+                            displayModeBar: false,
+                            responsive: true
+                        };
+
+                        Plotly.newPlot('plot', data, layout, config);
+                    })
     </script>
 </body>
 
