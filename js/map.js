@@ -9,13 +9,13 @@ var map = L.map('map', {
 // var hash = new L.Hash(map);
 map.attributionControl.setPrefix(
     '<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot;\
-        <a href="http://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; \
-        &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &middot;\
-        Sensor data from <a href="https://breathingspaces.org.uk/">Breathing Spaces</a>, \
-        <a href="https://uk-air.defra.gov.uk/networks/network-info?view=aurn">Defra AURN</a>, \
-        <a href="https://uk-air.defra.gov.uk/data/pcm-data">Defra PCM</a>,\
-        <a href="https://www.southampton.gov.uk/environmental-issues/pollution/air-quality/monitoring/nitrogen-dioxide-diffusion-tubes.aspx">SCC</a>, \
-        <a href="http://www.erg.kcl.ac.uk">KCL ERG</a>'
+        <a href="http://leafletjs.com" target="_blank" title="A JS library for interactive maps">Leaflet</a> &middot; \
+        &copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a> contributors &middot;\
+        Sensor data from <a href="https://breathingspaces.org.uk/" target="_blank">Breathing Spaces</a>, \
+        <a href="https://uk-air.defra.gov.uk/networks/network-info?view=aurn" target="_blank">Defra AURN</a>, \
+        <a href="https://uk-air.defra.gov.uk/data/pcm-data" target="_blank">Defra PCM</a>,\
+        <a href="https://www.southampton.gov.uk/environmental-issues/pollution/air-quality/monitoring/nitrogen-dioxide-diffusion-tubes.aspx" target="_blank">SCC</a>, \
+        <a href="http://www.erg.kcl.ac.uk" target="_blank">KCL ERG</a>'
 );
 var bounds_group = new L.featureGroup([]);
 
@@ -43,7 +43,7 @@ layer_OSM.addTo(map);
 
 function pop_ActiveSensors_1(feature, layer) {
     var popupContent = '<iframe src="' + feature.properties['graph_url'] + '" width="' + popupWidth + '" height="200" frameborder="0"></iframe>' +
-        '<br><a href="https://opennms.computenodes.net/grafana/d/xSYPGSRZk/st-denys-overview?orgId=1" target="_blank">Detailed sensor data</a>' +
+        '<br><a href="https://opennms.computenodes.net/grafana/d/G2NTzy6mk/st-denys-detailed-measurements?orgId=1&var-node=mqtt%3A' + feature.properties['sensor_id'] + '" target="_blank">Detailed sensor data</a>' +
         '<br><b>Disclaimer:</b> The data presented has not been recorded using legally validated reference equipment and should therefore be treated with caution.'
     layer.bindPopup(popupContent, {
         maxWidth: popupWidth
@@ -85,7 +85,7 @@ map.addLayer(layer_ActiveSensors_1);
 
 function pop_SchoolSensors(feature, layer) {
     var popupContent = '<iframe src="https://opennms.computenodes.net/grafana/d-solo/FjxbKsHZk/schools-detailed-measurements?orgId=1&var-node=mqtt%3A' + feature.properties['LoRaWAN_ID'] + '&panelId=8" width="' + popupWidth + '" height="200" frameborder="0"></iframe>' +
-        '<br><a href="https://opennms.computenodes.net/grafana/d/FjxbKsHZk/schools-detailed-measurements?orgId=1&var-node=mqtt%3A' + feature.properties['LoRaWAN_ID'] + '">Detailed sensor data</a>' +
+        '<br><a href="https://opennms.computenodes.net/grafana/d/FjxbKsHZk/schools-detailed-measurements?orgId=1&var-node=mqtt%3A' + feature.properties['LoRaWAN_ID'] + '" target="_blank">Detailed sensor data</a>' +
         '<br><b>Disclaimer:</b> The data presented has not been recorded using legally validated reference equipment and should therefore be treated with caution.'
     layer.bindPopup(popupContent, {
         maxWidth: popupWidth
@@ -126,7 +126,7 @@ map.addLayer(layer_SchoolSensors);
 ///////////////////////////////////////////////////////////////////////////////////
 function pop_AURN_Soton_Feb19Stats_2(feature, layer) {
     var popupContent = '<iframe src="graphs/AURN.html?site=' + feature.properties['site_id'] + '&width=' + (popupWidth - 20) + '" width="' + popupWidth + '" height="200" frameborder="0"></iframe>' + 
-    '<a href="http://southampton.my-air.uk/site/?SiteCode=' + feature.properties['site_id'] + '">Detailed sensor data</a><br>' + 
+    '<a href="http://southampton.my-air.uk/site/?SiteCode=' + feature.properties['site_id'] + '" target="_blank">Detailed sensor data</a><br>' +
     'NO<sub>2</sub> annual mean limit shown in red<br/><br/>' + 
     '<i>Data provided from <a href="http://www.erg.kcl.ac.uk">KCL ERG</a> under the Open Government License</i>'
     layer.bindPopup(popupContent, {
