@@ -43,8 +43,13 @@ layer_OSM.addTo(map);
 
 function pop_ActiveSensors_1(feature, layer) {
     var popupContent = '<iframe src="' + feature.properties['graph_url'] + '" width="' + popupWidth + '" height="200" frameborder="0"></iframe>' +
-        '<br><a href="https://opennms.computenodes.net/grafana/d/G2NTzy6mk/st-denys-detailed-measurements?orgId=1&var-node=mqtt%3A' + feature.properties['sensor_id'] + '" target="_blank">Detailed sensor data</a>' +
-        '<br><b>Disclaimer:</b> The data presented has not been recorded using legally validated reference equipment and should therefore be treated with caution.'
+        '<br><a href="https://opennms.computenodes.net/grafana/d/G2NTzy6mk/st-denys-detailed-measurements?orgId=1&var-node=mqtt%3A' + feature.properties['sensor_id'] + '" target="_blank">Detailed sensor data</a>';
+
+        if (feature.properties['sensor_id'] == 'nesta-4' || feature.properties['sensor_id'] == 'nesta-1') {
+            popupContent += "<br/><b>Note:</b> This sensor is currently offline and due to be fixed in early November";
+        }
+
+        popupContent += '<br><b>Disclaimer:</b> The data presented has not been recorded using legally validated reference equipment and should therefore be treated with caution.';
     layer.bindPopup(popupContent, {
         maxWidth: popupWidth
     });
