@@ -110,6 +110,19 @@ var json_ActiveSensors_1 = {
                 "type": "Point",
                 "coordinates": [-1.385474, 50.920785]
             }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "fid": 9,
+                "Name": "St Denys Church",
+                "sensor_id": "nesta-11",
+                "graph_url": "https:\/\/opennms.computenodes.net\/grafana\/d-solo\/xSYPGSRZk\/st-denys-overview?orgId=1&panelId=14"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-1.383826, 50.924810]
+            }
         }
     ]
 }
