@@ -123,6 +123,19 @@ var json_ActiveSensors_1 = {
                 "type": "Point",
                 "coordinates": [-1.383826, 50.924810]
             }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "fid": 9,
+                "Name": "Hillside Ave",
+                "sensor_id": "nesta-12",
+                "graph_url": "https:\/\/opennms.computenodes.net\/grafana\/d-solo\/xSYPGSRZk\/st-denys-overview?orgId=1&panelId=15"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-1.373111, 50.926103]
+            }
         }
     ]
 }
