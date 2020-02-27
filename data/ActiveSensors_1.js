@@ -127,7 +127,7 @@ var json_ActiveSensors_1 = {
         {
             "type": "Feature",
             "properties": {
-                "fid": 9,
+                "fid": 10,
                 "Name": "Hillside Ave",
                 "sensor_id": "nesta-12",
                 "graph_url": "https:\/\/opennms.computenodes.net\/grafana\/d-solo\/xSYPGSRZk\/st-denys-overview?orgId=1&panelId=15"
@@ -135,6 +135,19 @@ var json_ActiveSensors_1 = {
             "geometry": {
                 "type": "Point",
                 "coordinates": [-1.373111, 50.926103]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "fid": 11,
+                "Name": "Beechwood Junior School",
+                "sensor_id": "nesta-14",
+                "graph_url": "https:\/\/opennms.computenodes.net\/grafana\/d-solo\/xSYPGSRZk\/st-denys-overview?orgId=1&panelId=16"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-1.366803, 50.917337]
             }
         }
     ]
