@@ -13,7 +13,7 @@ var json_ActiveSensors_1 = {
                 "fid": 1,
                 "Name": "Priory Rd (North)",
                 "sensor_id": "nesta-2-1",
-                "graph_url": "https:\/\/opennms.computenodes.net\/grafana\/d-solo\/xSYPGSRZk\/st-denys-overview?orgId=1&panelId=3"
+                "graph_url": "https://aqdata.uksouth.cloudapp.azure.com:3000/d-solo/s_1oeuxWk/st-denys-overview?orgId=1&panelId=4"
             },
             "geometry": {
                 "type": "Point",
@@ -26,7 +26,7 @@ var json_ActiveSensors_1 = {
                 "fid": 2,
                 "Name": "Priory Rd (South)",
                 "sensor_id": "nesta-1",
-                "graph_url": "https:\/\/opennms.computenodes.net\/grafana\/d-solo\/xSYPGSRZk\/st-denys-overview?orgId=1&panelId=2"
+                "graph_url": "https://aqdata.uksouth.cloudapp.azure.com:3000/d-solo/s_1oeuxWk/st-denys-overview?orgId=1&panelId=7"
             },
             "geometry": {
                 "type": "Point",
@@ -39,7 +39,7 @@ var json_ActiveSensors_1 = {
                 "fid": 3,
                 "Name": "Horsehoe Bridge",
                 "sensor_id": "nesta-4",
-                "graph_url": "https:\/\/opennms.computenodes.net\/grafana\/d-solo\/xSYPGSRZk\/st-denys-overview?orgId=1&panelId=4"
+                "graph_url": "https://aqdata.uksouth.cloudapp.azure.com:3000/d-solo/s_1oeuxWk/st-denys-overview?orgId=1&panelId=11"
             },
             "geometry": {
                 "type": "Point",
@@ -52,7 +52,7 @@ var json_ActiveSensors_1 = {
                 "fid": 4,
                 "Name": "Kent Rd",
                 "sensor_id": "nesta-5",
-                "graph_url": "https:\/\/opennms.computenodes.net\/grafana\/d-solo\/xSYPGSRZk\/st-denys-overview?orgId=1&panelId=5"
+                "graph_url": "https://aqdata.uksouth.cloudapp.azure.com:3000/d-solo/s_1oeuxWk/st-denys-overview?orgId=1&panelId=13"
             },
             "geometry": {
                 "type": "Point",
@@ -65,7 +65,7 @@ var json_ActiveSensors_1 = {
                 "fid": 5,
                 "Name": "St Denys Rd",
                 "sensor_id": "nesta-7",
-                "graph_url": "https:\/\/opennms.computenodes.net\/grafana\/d-solo\/xSYPGSRZk\/st-denys-overview?orgId=1&panelId=7"
+                "graph_url": "https://aqdata.uksouth.cloudapp.azure.com:3000/d-solo/s_1oeuxWk/st-denys-overview?orgId=1&panelId=9"
             },
             "geometry": {
                 "type": "Point",
@@ -78,7 +78,7 @@ var json_ActiveSensors_1 = {
                 "fid": 6,
                 "Name": "Portswood Rd",
                 "sensor_id": "nesta-6",
-                "graph_url": "https:\/\/opennms.computenodes.net\/grafana\/d-solo\/xSYPGSRZk\/st-denys-overview?panelId=6&orgId=1"
+                "graph_url": "https://aqdata.uksouth.cloudapp.azure.com:3000/d-solo/s_1oeuxWk/st-denys-overview?orgId=1&panelId=15"
             },
             "geometry": {
                 "type": "Point",
@@ -91,7 +91,7 @@ var json_ActiveSensors_1 = {
                 "fid": 7,
                 "Name": "Priory Rd-Kent Rd junction",
                 "sensor_id": "nesta-8",
-                "graph_url": "https:\/\/opennms.computenodes.net\/grafana\/d-solo\/xSYPGSRZk\/st-denys-overview?orgId=1&panelId=10"
+                "graph_url": "https://aqdata.uksouth.cloudapp.azure.com:3000/d-solo/s_1oeuxWk/st-denys-overview?orgId=1&panelId=12"
             },
             "geometry": {
                 "type": "Point",
@@ -104,7 +104,7 @@ var json_ActiveSensors_1 = {
                 "fid": 8,
                 "Name": "Riverside",
                 "sensor_id": "nesta-9",
-                "graph_url": "https:\/\/opennms.computenodes.net\/grafana\/d-solo\/xSYPGSRZk\/st-denys-overview?orgId=1&panelId=11"
+                "graph_url": "https://aqdata.uksouth.cloudapp.azure.com:3000/d-solo/s_1oeuxWk/st-denys-overview?orgId=1&panelId=10"
             },
             "geometry": {
                 "type": "Point",
@@ -117,7 +117,7 @@ var json_ActiveSensors_1 = {
                 "fid": 9,
                 "Name": "St Denys Church",
                 "sensor_id": "nesta-11",
-                "graph_url": "https:\/\/opennms.computenodes.net\/grafana\/d-solo\/xSYPGSRZk\/st-denys-overview?orgId=1&panelId=14"
+                "graph_url": "https://aqdata.uksouth.cloudapp.azure.com:3000/d-solo/s_1oeuxWk/st-denys-overview?orgId=1&panelId=8"
             },
             "geometry": {
                 "type": "Point",
@@ -130,7 +130,7 @@ var json_ActiveSensors_1 = {
                 "fid": 10,
                 "Name": "Hillside Ave",
                 "sensor_id": "nesta-12",
-                "graph_url": "https:\/\/opennms.computenodes.net\/grafana\/d-solo\/xSYPGSRZk\/st-denys-overview?orgId=1&panelId=15"
+                "graph_url": "https://aqdata.uksouth.cloudapp.azure.com:3000/d-solo/s_1oeuxWk/st-denys-overview?orgId=1&panelId=14"
             },
             "geometry": {
                 "type": "Point",
@@ -143,7 +143,7 @@ var json_ActiveSensors_1 = {
                 "fid": 11,
                 "Name": "Beechwood Junior School",
                 "sensor_id": "nesta-14",
-                "graph_url": "https:\/\/opennms.computenodes.net\/grafana\/d-solo\/xSYPGSRZk\/st-denys-overview?orgId=1&panelId=16"
+                "graph_url": "https://aqdata.uksouth.cloudapp.azure.com:3000/d-solo/s_1oeuxWk/st-denys-overview?orgId=1&panelId=16"
             },
             "geometry": {
                 "type": "Point",
